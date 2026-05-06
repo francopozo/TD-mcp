@@ -4,8 +4,8 @@
 	"build": null,
 	"generator": "Embody/5.0.403",
 	"td_build": "099.2025.32460",
-	"source_file": "Test.8.toe",
-	"exported_at": "2026-05-06T01:23:13Z",
+	"source_file": "Test.11.toe",
+	"exported_at": "2026-05-06T01:25:33Z",
 	"network_path": "/",
 	"options": {
 		"include_dat_content": false,
@@ -101,14 +101,13 @@
 			"color": [0.3, 0.5, 0.9]
 		},
 		"nullSOP": {
-			"size": [130, 90],
 			"color": [0.67, 0.67, 0.67]
 		},
 		"nullTOP": {
-			"size": [130, 90],
 			"color": [0.67, 0.67, 0.67]
 		},
 		"noiseTOP": {
+			"flags": ["viewer"],
 			"size": [130, 90],
 			"color": [0.67, 0.67, 0.67]
 		}
@@ -363,7 +362,7 @@
 						"callbacks": "text1_callbacks"
 					},
 					"flags": ["viewer"],
-					"position": [375, 375],
+					"position": [425, 450],
 					"size": [160, 130],
 					"color": [0.325, 0.8, 0.3],
 					"tags": ["tox"]
@@ -5120,7 +5119,8 @@
 							"name": "final_out",
 							"type": "nullSOP",
 							"flags": ["viewer"],
-							"position": [1000, 0],
+							"position": [1000, -4],
+							"size": [130, 94],
 							"inputs": ["flower_gen"]
 						},
 						{
@@ -5129,6 +5129,7 @@
 							"parameters": {
 								"rangeend": "=me.inputs[0].numPrims if me.par.entity == 'primitive' else me.inputs[0].numPoints"
 							},
+							"flags": ["viewer"],
 							"position": [800, 0],
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67],
@@ -5137,17 +5138,22 @@
 						{
 							"name": "flower_out",
 							"type": "nullSOP",
-							"position": [800, 200]
+							"flags": ["viewer"],
+							"position": [800, 200],
+							"size": [130, 90]
 						},
 						{
 							"name": "sparkle_out",
 							"type": "nullTOP",
+							"flags": ["viewer"],
 							"position": [400, -400],
+							"size": [130, 90],
 							"inputs": ["sparkle_blur"]
 						},
 						{
 							"name": "sparkle_blur",
 							"type": "blurTOP",
+							"flags": ["viewer"],
 							"position": [200, -400],
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67],
@@ -5162,7 +5168,7 @@
 								"resolutionw": 512,
 								"resolutionh": 512
 							},
-							"position": [-200, 200]
+							"position": [-300, 200]
 						},
 						{
 							"name": "sparkle_noise",
@@ -5173,6 +5179,7 @@
 						{
 							"name": "particle_force",
 							"type": "forceSOP",
+							"flags": ["viewer"],
 							"position": [400, 0],
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67],
@@ -5181,6 +5188,7 @@
 						{
 							"name": "particle_shape",
 							"type": "sphereSOP",
+							"flags": ["viewer"],
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67]
 						},
@@ -5190,6 +5198,7 @@
 							"parameters": {
 								"copyg": "='copyGroup' + str(me.copyIndex)"
 							},
+							"flags": ["viewer"],
 							"position": [200, 0],
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67],
@@ -5198,6 +5207,7 @@
 						{
 							"name": "sparkle_thresh",
 							"type": "thresholdTOP",
+							"flags": ["viewer"],
 							"position": [0, 200],
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67],
@@ -5206,6 +5216,7 @@
 						{
 							"name": "composite_final",
 							"type": "compositeTOP",
+							"flags": ["viewer"],
 							"position": [600, -400],
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67],
@@ -5214,6 +5225,7 @@
 						{
 							"name": "collision_detect",
 							"type": "attributeSOP",
+							"flags": ["viewer"],
 							"position": [600, 0],
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67],
@@ -5224,7 +5236,14 @@
 				{
 					"name": "sparkles_output",
 					"type": "nullTOP",
-					"position": [400, 0]
+					"parameters": {
+						"outputresolution": "custom",
+						"resolutionw": 512,
+						"resolutionh": 512
+					},
+					"position": [225, 25],
+					"size": [130, 105],
+					"inputs": ["particles/composite_final"]
 				},
 				{
 					"name": "text1_callbacks",
@@ -5233,7 +5252,7 @@
 						"language": "python"
 					},
 					"flags": ["viewer"],
-					"position": [375, 215],
+					"position": [425, 290],
 					"size": [160, 130],
 					"color": [0.67, 0.67, 0.67],
 					"dock": "text1"
@@ -5253,7 +5272,9 @@
 				{
 					"name": "particles_output",
 					"type": "nullSOP",
-					"position": [400, 200]
+					"position": [225, 225],
+					"size": [130, 90],
+					"inputs": ["particles/final_out"]
 				}
 			]
 		}

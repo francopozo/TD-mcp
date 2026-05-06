@@ -4,8 +4,8 @@
 	"build": null,
 	"generator": "Embody/5.0.403",
 	"td_build": "099.2025.32460",
-	"source_file": "Test.7.toe",
-	"exported_at": "2026-05-06T01:22:11Z",
+	"source_file": "Test.10.toe",
+	"exported_at": "2026-05-06T01:24:39Z",
 	"network_path": "/",
 	"options": {
 		"include_dat_content": false,
@@ -101,10 +101,10 @@
 			"color": [0.3, 0.5, 0.9]
 		},
 		"nullSOP": {
-			"size": [130, 90],
 			"color": [0.67, 0.67, 0.67]
 		},
 		"nullTOP": {
+			"size": [130, 90],
 			"color": [0.67, 0.67, 0.67]
 		},
 		"noiseTOP": {
@@ -362,7 +362,7 @@
 						"callbacks": "text1_callbacks"
 					},
 					"flags": ["viewer"],
-					"position": [375, 375],
+					"position": [425, 450],
 					"size": [160, 130],
 					"color": [0.325, 0.8, 0.3],
 					"tags": ["tox"]
@@ -5118,8 +5118,8 @@
 						{
 							"name": "final_out",
 							"type": "nullSOP",
-							"flags": ["viewer"],
-							"position": [1000, 0],
+							"position": [1000, -4],
+							"size": [130, 94],
 							"inputs": ["flower_gen"]
 						},
 						{
@@ -5136,13 +5136,13 @@
 						{
 							"name": "flower_out",
 							"type": "nullSOP",
-							"position": [800, 200]
+							"position": [800, 200],
+							"size": [130, 90]
 						},
 						{
 							"name": "sparkle_out",
 							"type": "nullTOP",
 							"position": [400, -400],
-							"size": [130, 90],
 							"inputs": ["sparkle_blur"]
 						},
 						{
@@ -5222,15 +5222,14 @@
 					]
 				},
 				{
-					"name": "sparkles_null",
+					"name": "sparkles_output",
 					"type": "nullTOP",
-					"position": [200, 50],
-					"size": [130, 105]
-				},
-				{
-					"name": "particles_null",
-					"type": "nullSOP",
-					"position": [200, 200]
+					"parameters": {
+						"outputresolution": "custom",
+						"resolutionw": 512,
+						"resolutionh": 512
+					},
+					"position": [400, 0]
 				},
 				{
 					"name": "text1_callbacks",
@@ -5239,7 +5238,7 @@
 						"language": "python"
 					},
 					"flags": ["viewer"],
-					"position": [375, 215],
+					"position": [425, 290],
 					"size": [160, 130],
 					"color": [0.67, 0.67, 0.67],
 					"dock": "text1"
@@ -5255,6 +5254,12 @@
 					},
 					"position": [300, 650],
 					"tags": ["tsv"]
+				},
+				{
+					"name": "particles_output",
+					"type": "nullSOP",
+					"position": [400, 200],
+					"size": [130, 90]
 				}
 			]
 		}

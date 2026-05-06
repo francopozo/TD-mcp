@@ -4,8 +4,8 @@
 	"build": null,
 	"generator": "Embody/5.0.403",
 	"td_build": "099.2025.32460",
-	"source_file": "Test.5.toe",
-	"exported_at": "2026-05-06T01:17:16Z",
+	"source_file": "Test.8.toe",
+	"exported_at": "2026-05-06T01:23:13Z",
 	"network_path": "/",
 	"options": {
 		"include_dat_content": false,
@@ -84,8 +84,7 @@
 		"annotateCOMP": {
 			"parameters": {
 				"order": "=me.digits or 0",
-				"layerzone": "=0 if hasattr(me, 'EncloseOPs') and me.EncloseOPs else 1",
-				"clone": "=op.TDAnnotate.op('annotate', includeUtility=True)"
+				"layerzone": "=0 if hasattr(me, 'EncloseOPs') and me.EncloseOPs else 1"
 			},
 			"flags": ["display"]
 		},
@@ -106,6 +105,7 @@
 			"color": [0.67, 0.67, 0.67]
 		},
 		"nullTOP": {
+			"size": [130, 90],
 			"color": [0.67, 0.67, 0.67]
 		},
 		"noiseTOP": {
@@ -363,7 +363,7 @@
 						"callbacks": "text1_callbacks"
 					},
 					"flags": ["viewer"],
-					"position": [600, 475],
+					"position": [375, 375],
 					"size": [160, 130],
 					"color": [0.325, 0.8, 0.3],
 					"tags": ["tox"]
@@ -1049,15 +1049,14 @@
 						]
 					},
 					"flags": ["display", "viewer"],
-					"position": [500, 650],
+					"position": [450, 650],
 					"size": [160, 92],
 					"color": [0.3, 0.5, 0.9],
 					"storage": {
 						"claudius_running": false,
 						"_tdn_restore_failures": ["/embody/base1"],
 						"expand_order": [],
-						"_start_in_progress": true,
-						"_init_complete": true
+						"_start_in_progress": true
 					},
 					"children": [
 						{
@@ -1258,7 +1257,8 @@
 									"flags": ["viewer"],
 									"position": [0, 275],
 									"size": [160, 76],
-									"color": [0.3, 0.5, 0.9]
+									"color": [0.3, 0.5, 0.9],
+									"palette_clone": true
 								},
 								{
 									"name": "button0",
@@ -1358,7 +1358,7 @@
 									"name": "button1",
 									"type": "buttonCOMP",
 									"parameters": {
-										"label": "+  Add tox",
+										"label": "×  Remove tox",
 										"colorr": 0.2,
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
@@ -1456,6 +1456,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -1549,6 +1550,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -1642,6 +1644,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -1735,6 +1738,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -1828,6 +1832,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -1921,6 +1926,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -2014,6 +2020,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -2107,6 +2114,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -2292,6 +2300,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -2385,6 +2394,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -2478,6 +2488,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -2571,6 +2582,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -2664,6 +2676,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -2757,6 +2770,7 @@
 										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
 										"colorb": 0.2,
 										"alignorder": 1,
+										"display": false,
 										"topsmoothness": "mipmap",
 										"reloadbuiltin": false,
 										"relpath": "inherit"
@@ -4500,7 +4514,8 @@
 							},
 							"position": [-770, -1270],
 							"size": [600, 370],
-							"color": [0.45, 0.45, 0.45]
+							"color": [0.45, 0.45, 0.45],
+							"palette_clone": true
 						},
 						{
 							"name": "templates",
@@ -4769,7 +4784,8 @@
 							"position": [300, 475],
 							"size": [160, 130],
 							"color": [0.3, 0.5, 0.9],
-							"comp_inputs": ["manager"]
+							"comp_inputs": ["manager"],
+							"palette_clone": true
 						},
 						{
 							"name": "annotation_ui",
@@ -4803,7 +4819,8 @@
 								}
 							},
 							"size": [1300, 1000],
-							"color": [0.45, 0.45, 0.45]
+							"color": [0.45, 0.45, 0.45],
+							"palette_clone": true
 						},
 						{
 							"name": "_envoy_perform",
@@ -4908,7 +4925,8 @@
 							},
 							"position": [-770, 30],
 							"size": [670, 830],
-							"color": [0.45, 0.45, 0.45]
+							"color": [0.45, 0.45, 0.45],
+							"palette_clone": true
 						},
 						{
 							"name": "CatalogManagerExt",
@@ -4955,7 +4973,8 @@
 								}
 							},
 							"position": [-800, -700],
-							"size": [700, 600]
+							"size": [700, 600],
+							"palette_clone": true
 						},
 						{
 							"name": "annotation_windows",
@@ -4990,7 +5009,8 @@
 							},
 							"position": [100, 600],
 							"size": [1140, 310],
-							"color": [0.45, 0.45, 0.45]
+							"color": [0.45, 0.45, 0.45],
+							"palette_clone": true
 						},
 						{
 							"name": "divergent_defaults",
@@ -5123,8 +5143,7 @@
 							"name": "sparkle_out",
 							"type": "nullTOP",
 							"position": [400, -400],
-							"size": [130, 90],
-							"inputs": ["particle_base"]
+							"inputs": ["sparkle_blur"]
 						},
 						{
 							"name": "sparkle_blur",
@@ -5132,7 +5151,7 @@
 							"position": [200, -400],
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67],
-							"inputs": ["sparkle_thresh"]
+							"inputs": ["sparkle_noise"]
 						},
 						{
 							"name": "particle_base",
@@ -5148,7 +5167,8 @@
 						{
 							"name": "sparkle_noise",
 							"type": "noiseTOP",
-							"position": [0, -400]
+							"position": [0, -400],
+							"inputs": ["particle_base"]
 						},
 						{
 							"name": "particle_force",
@@ -5202,16 +5222,9 @@
 					]
 				},
 				{
-					"name": "sparkles_null",
+					"name": "sparkles_output",
 					"type": "nullTOP",
-					"position": [200, 0],
-					"size": [130, 105]
-				},
-				{
-					"name": "particles_null",
-					"type": "nullSOP",
-					"flags": ["viewer"],
-					"position": [200, 200]
+					"position": [400, 0]
 				},
 				{
 					"name": "text1_callbacks",
@@ -5220,7 +5233,7 @@
 						"language": "python"
 					},
 					"flags": ["viewer"],
-					"position": [600, 315],
+					"position": [375, 215],
 					"size": [160, 130],
 					"color": [0.67, 0.67, 0.67],
 					"dock": "text1"
@@ -5236,6 +5249,11 @@
 					},
 					"position": [300, 650],
 					"tags": ["tsv"]
+				},
+				{
+					"name": "particles_output",
+					"type": "nullSOP",
+					"position": [400, 200]
 				}
 			]
 		}
