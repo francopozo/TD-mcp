@@ -1,0 +1,5262 @@
+{
+	"format": "tdn",
+	"version": "1.3",
+	"build": null,
+	"generator": "Embody/5.0.403",
+	"td_build": "099.2025.32460",
+	"source_file": "Test.7.toe",
+	"exported_at": "2026-05-06T01:22:11Z",
+	"network_path": "/",
+	"options": {
+		"include_dat_content": false,
+		"include_storage": true
+	},
+	"type_defaults": {
+		"containerCOMP": {
+			"parameters": {
+				"resizecomp": "=me",
+				"repocomp": "=me"
+			}
+		},
+		"textCOMP": {
+			"parameters": {
+				"resizecomp": "=me",
+				"repocomp": "=me"
+			}
+		},
+		"selectDAT": {
+			"parameters": {
+				"rowindexend": "=me.inputTable.numRows - 1",
+				"rowexpr": "=re.match('.*',me.inputCell.val) != None",
+				"colindexend": "=me.inputTable.numCols - 1",
+				"colexpr": "=re.match('.*',me.inputCell.val) != None"
+			},
+			"flags": ["viewer"],
+			"size": [130, 90]
+		},
+		"buttonCOMP": {
+			"parameters": {
+				"buttontype": "momentary",
+				"scaletofit": "onlyshrink",
+				"fontsize": 12,
+				"h": 28,
+				"hmode": "fill",
+				"resizecomp": "=me",
+				"repocomp": "=me",
+				"clone": "=op.TDTox.op('defaultCOMPs/button')"
+			},
+			"flags": ["viewer"]
+		},
+		"outCHOP": {
+			"parameters": {
+				"label": "=me.name",
+				"autoexportroot": "=parent()"
+			},
+			"flags": ["viewer"],
+			"size": [130, 90]
+		},
+		"parameterCHOP": {
+			"parameters": {
+				"parameters": "value0",
+				"custom": false,
+				"builtin": true,
+				"renameto": "v1",
+				"autoexportroot": "=parent()"
+			},
+			"flags": ["viewer"],
+			"size": [130, 90]
+		},
+		"parameterexecuteDAT": {
+			"parameters": {
+				"fromop": "=parent()"
+			}
+		},
+		"panelexecuteDAT": {
+			"parameters": {
+				"fromop": "=parent()",
+				"valuechange": true
+			}
+		},
+		"tableDAT": {
+			"size": [130, 90],
+			"color": [0.9, 0.3, 0.4]
+		},
+		"annotateCOMP": {
+			"parameters": {
+				"order": "=me.digits or 0",
+				"layerzone": "=0 if hasattr(me, 'EncloseOPs') and me.EncloseOPs else 1"
+			},
+			"flags": ["display"]
+		},
+		"baseCOMP": {
+			"size": [160, 130]
+		},
+		"windowCOMP": {
+			"parameters": {
+				"title": "=me",
+				"borders": false,
+				"includedialog": false,
+				"reloadbuiltin": false
+			},
+			"color": [0.3, 0.5, 0.9]
+		},
+		"nullSOP": {
+			"size": [130, 90],
+			"color": [0.67, 0.67, 0.67]
+		},
+		"nullTOP": {
+			"color": [0.67, 0.67, 0.67]
+		},
+		"noiseTOP": {
+			"size": [130, 90],
+			"color": [0.67, 0.67, 0.67]
+		}
+	},
+	"par_templates": {
+		"about": [
+			{
+				"default": "1.0",
+				"help": "Annotate COMP default setup version.",
+				"name": "Version",
+				"readOnly": true,
+				"startSection": true,
+				"style": "Str"
+			},
+			{
+				"help": "Click to open help page.",
+				"name": "Help",
+				"style": "Pulse"
+			}
+		],
+		"text": [
+			{
+				"default": "Annotate",
+				"help": "Text in the title bar.",
+				"label": "Title Text",
+				"name": "Titletext",
+				"startSection": true,
+				"style": "Str"
+			},
+			{
+				"clampMin": true,
+				"default": 30,
+				"help": "Height of the title bar. Title font height adjusts automatically to fill.",
+				"label": "Title Height",
+				"name": "Titleheight",
+				"normMax": 100.0,
+				"normMin": 5.0,
+				"style": "Int"
+			},
+			{
+				"default": "left",
+				"help": "Alignment of title text.",
+				"label": "Title Align",
+				"menuLabels": ["Left", "Center", "Right"],
+				"menuNames": ["left", "center", "right"],
+				"name": "Titlealign",
+				"style": "Menu"
+			},
+			{
+				"help": "Text in the body area. Use an expression for newlines etc.",
+				"label": "Body Text",
+				"name": "Bodytext",
+				"startSection": true,
+				"style": "Str"
+			},
+			{
+				"clampMin": true,
+				"default": 10,
+				"help": "Size of text in the body area.",
+				"label": "Body Font Size",
+				"name": "Bodyfontsize",
+				"normMax": 100.0,
+				"normMin": 8.0,
+				"style": "Int"
+			},
+			{
+				"help": "Limit the width of the text area.",
+				"label": "Limit Body Text Width",
+				"name": "Bodylimitwidth",
+				"style": "Toggle"
+			},
+			{
+				"clampMin": true,
+				"default": 1000,
+				"help": "Width limit that will cause wraparound or cut-off. Measured in Panel units.",
+				"label": "Max Body Text Width",
+				"name": "Bodymaxwidth",
+				"normMax": 2000.0,
+				"normMin": 100.0,
+				"style": "Int"
+			}
+		],
+		"settings": [
+			{
+				"default": "comment",
+				"help": "Switch between Comment, Network Box, and Annotate Modes. ",
+				"menuLabels": ["Comment", "Network Box", "Annotate"],
+				"menuNames": ["comment", "networkbox", "annotate"],
+				"name": "Mode",
+				"style": "Menu"
+			},
+			{
+				"help": "Converts quotes, ellipsis, and dashes to more typographically nice unicode versions.",
+				"label": "Smart Quote",
+				"name": "Smartquote",
+				"startSection": true,
+				"style": "Toggle"
+			},
+			{
+				"default": true,
+				"help": "Wrap body text when it extends past right bound.",
+				"label": "Body Word Wrap",
+				"name": "Bodywordwrap",
+				"style": "Toggle"
+			},
+			{
+				"default": 1,
+				"help": "Background color base.",
+				"label": "Back Color",
+				"name": "Backcolorr",
+				"startSection": true,
+				"style": "RGBA"
+			},
+			{
+				"clampMax": true,
+				"clampMin": true,
+				"default": 1,
+				"help": "Back color alpha.",
+				"label": "Back Color Alpha",
+				"name": "Backcoloralpha",
+				"style": "Float"
+			},
+			{
+				"clampMax": true,
+				"clampMin": true,
+				"default": 1,
+				"help": "Opacity of the entire Annotate.",
+				"label": "Annotate Opacity",
+				"name": "Opacity",
+				"style": "Float"
+			}
+		],
+		"op_viewer": [
+			{
+				"help": "Turn the visibility of the viewer specified in the OP parameter below on or off.",
+				"label": "Viewer Display",
+				"name": "Opviewerdisplay",
+				"style": "Toggle"
+			},
+			{
+				"help": "The operator whose viewer is displayed in the Annotate.",
+				"label": "OP",
+				"name": "Opviewer",
+				"style": "OP"
+			},
+			{
+				"help": "Allow interaction with the OP viewer.",
+				"label": "OP Viewer Interactive",
+				"name": "Opviewerinteractive",
+				"style": "Toggle"
+			},
+			{
+				"default": "False",
+				"help": "Use the Size/Aspect Override to control viewer's size in the background.",
+				"label": "Size/Aspect Override",
+				"menuLabels": ["Natural", "Specify", "Auto-Fit"],
+				"menuNames": ["natural", "specify", "autofit"],
+				"name": "Opvieweroversize",
+				"startSection": true,
+				"style": "Menu"
+			},
+			{
+				"clampMin": true,
+				"default": 800,
+				"help": "Diplay viewer as-if it were being displayed at this resolution. This is particularly useful for zooming into operators that don't have a built-in resolution, like CHOPs, SOPs, and DATs.",
+				"label": "Size/Aspect",
+				"name": "Opviewersize",
+				"normMax": 1000.0,
+				"normMin": 1.0,
+				"style": "WH"
+			},
+			{
+				"default": 1,
+				"help": "Scale the viewer by this factor.",
+				"label": "Scale",
+				"name": "Opviewerscale",
+				"normMax": 2.0,
+				"startSection": true,
+				"style": "Float"
+			},
+			{
+				"help": "Move the border of the viewer towards left edge of Annotate when negative or towards right edge when positive.",
+				"label": "Justify X",
+				"name": "Opviewerjustifyx",
+				"normMin": -1.0,
+				"style": "Float"
+			},
+			{
+				"label": "Justify Y",
+				"name": "Opviewerjustifyy",
+				"normMin": -1.0,
+				"style": "Float"
+			},
+			{
+				"help": "When True, allow viewer to display in the Annotate title area as well as body.",
+				"label": "Cover Body and Title",
+				"name": "Opviewerfillbodytitle",
+				"style": "Toggle"
+			},
+			{
+				"clampMin": true,
+				"default": 1,
+				"help": "Zoom the viewer by this scale factor without increasing the size of its display area in the Annotate.",
+				"label": "OP Viewer Zoom",
+				"min": 0.001,
+				"name": "Opviewerzoom",
+				"normMax": 5.0,
+				"normMin": 1.0,
+				"startSection": true,
+				"style": "Float"
+			},
+			{
+				"help": "Offsets the displayed area within the viewer. Combined with OP Viewer Zoom, this lets you display a specific area of a viewer, such as a CHOP channel or table cell.",
+				"label": "OP Viewer Offset",
+				"name": "Opvieweroffsetx",
+				"style": "XYZW"
+			},
+			{
+				"clampMax": true,
+				"clampMin": true,
+				"default": 1,
+				"help": "Alpha value of the background area in the OP Viewer.",
+				"label": "Fill Alpha",
+				"name": "Opviewerfillalpha",
+				"startSection": true,
+				"style": "Float"
+			}
+		]
+	},
+	"type": "baseCOMP",
+	"flags": ["display", "render"],
+	"operators": [
+		{
+			"name": "project1",
+			"type": "containerCOMP",
+			"parameters": {
+				"w": 1280,
+				"h": 720,
+				"top": "./out1",
+				"borderover": false,
+				"parentshortcut": "Project"
+			},
+			"flags": ["viewer"],
+			"position": [200, 100],
+			"size": [400, 244],
+			"color": [0.56, 0.56, 0.56],
+			"children": [
+				{
+					"name": "text1",
+					"type": "textCOMP",
+					"parameters": {
+						"callbacks": "text1_callbacks"
+					},
+					"flags": ["viewer"],
+					"position": [375, 375],
+					"size": [160, 130],
+					"color": [0.325, 0.8, 0.3],
+					"tags": ["tox"]
+				},
+				{
+					"name": "Embody",
+					"type": "containerCOMP",
+					"parameters": {
+						"w": "~op('./manager').par.w",
+						"h": "~op('./manager').par.h",
+						"display": false,
+						"borderover": false,
+						"align": "horizlr",
+						"parentshortcut": "Embody",
+						"opshortcut": "Embody",
+						"opviewer": "./text_bg",
+						"reloadbuiltin": false
+					},
+					"sequences": {
+						"ext": [
+							{
+								"object": "op('./EmbodyExt').module.EmbodyExt(me)",
+								"name": "Embody",
+								"promote": true
+							},
+							{
+								"object": "op('./EnvoyExt').module.EnvoyExt(me)",
+								"name": "Envoy",
+								"promote": true
+							},
+							{
+								"object": "op('./TDNExt').module.TDNExt(me)",
+								"name": "TDN",
+								"promote": true
+							},
+							{
+								"object": "op('./CatalogManagerExt').module.CatalogManagerExt(me)",
+								"name": "CatalogManager",
+								"promote": true
+							},
+							{},
+							{},
+							{},
+							{},
+							{},
+							{},
+							{}
+						]
+					},
+					"custom_pars": {
+						"Embody": [
+							{
+								"name": "Status",
+								"style": "Str",
+								"readOnly": true,
+								"help": "Current Embody status (read-only). Shows whether Embody is initialized and running.",
+								"value": "Enabled"
+							},
+							{
+								"name": "Performmode",
+								"style": "Toggle",
+								"label": "Perform Mode"
+							},
+							{
+								"name": "Createexternalizationstable",
+								"style": "Pulse",
+								"label": "Create Externalizations Table",
+								"startSection": true,
+								"help": "Creates the externalizations tracking table as a sibling operator if it does not already exist. Safe to pulse at any time — no-op if the table is already connected. Use this to recover if the table was lost after an Embody upgrade."
+							},
+							{
+								"name": "Externalizations",
+								"style": "DAT",
+								"label": "Externalizations Table",
+								"help": "Reference to the externalizations tracking table DAT (stored in TSV format). Lists all externalized operators with their paths, types, timestamps, and dirty state.",
+								"value": "/project1/externalizations"
+							},
+							{
+								"name": "Openexternalizationstable",
+								"style": "Pulse",
+								"label": "Open Externalizations Table",
+								"help": "Opens the externalizations tracking table in a floating viewer window."
+							},
+							{
+								"name": "Folder",
+								"style": "Folder",
+								"label": "Externalizations Folder",
+								"startSection": true,
+								"help": "Root folder where externalized files are saved. All .tox, .py, .json, and other externalized files are written relative to this folder."
+							},
+							{
+								"name": "Disable",
+								"style": "Pulse",
+								"startSection": true,
+								"help": "Disables Embody: removes all externalization tags from operators and stops tracking. Use Update to re-enable."
+							},
+							{
+								"name": "Update",
+								"style": "Pulse",
+								"label": "Enable/Update",
+								"help": "Initializes Embody if not yet running, or triggers a full update cycle: scans all tagged operators, checks continuity, and syncs the externalizations table."
+							},
+							{
+								"name": "Refresh",
+								"style": "Pulse",
+								"help": "Refreshes the externalizations table by re-scanning tagged operators without triggering saves or continuity checks."
+							},
+							{
+								"name": "Externalizeproject",
+								"style": "Pulse",
+								"label": "Externalize Full Project",
+								"startSection": true,
+								"help": "Tags all eligible operators in the entire project for externalization. COMPs get .tox tags, DATs get file-type tags based on their content."
+							},
+							{
+								"name": "Detectduplicatepaths",
+								"style": "Toggle",
+								"label": "Detect Duplicate Paths",
+								"help": "When enabled, warns if multiple operators resolve to the same externalized file path. Helps catch naming conflicts.",
+								"value": true
+							},
+							{
+								"name": "Localtimestamps",
+								"style": "Toggle",
+								"label": "Local Timestamps",
+								"default": true,
+								"help": "When enabled, timestamps in the externalizations table are displayed in your local timezone instead of UTC."
+							},
+							{
+								"name": "Toxrestoreonstart",
+								"style": "Toggle",
+								"label": "Restore toxes on Start",
+								"help": "When enabled, automatically restores TOX-strategy COMPs from .tox files on disk when the project opens. Useful when COMPs were externalized but the .toe was not saved.",
+								"value": true
+							},
+							{
+								"name": "Datrestoreonstart",
+								"style": "Toggle",
+								"label": "Restore DATs on Start",
+								"default": true,
+								"help": "When enabled, automatically restores DAT-strategy operators from externalized files on disk when the project opens. Recreates missing DATs (py, json, xml, etc.) and configures file sync. Safely excludes Embody descendants and DATs inside TOX/TDN COMPs."
+							},
+							{
+								"name": "Filecleanup",
+								"style": "Menu",
+								"label": "File Cleanup",
+								"startSection": true,
+								"default": "ask",
+								"menuNames": ["ask", "keep", "delete"],
+								"menuLabels": ["Ask", "Always Keep Files", "Always Delete Files"],
+								"help": "When a deleted operator's external file still exists on disk: Ask prompts each time, Always Keep removes the tracking entry but leaves files on disk, Always Delete removes both the entry and the file.",
+								"value": "delete"
+							},
+							{
+								"name": "Tdndatsafety",
+								"style": "Menu",
+								"label": "Content Safety",
+								"default": "ask",
+								"menuNames": ["ask", "externalize", "ignore"],
+								"menuLabels": ["Ask Each Save", "Always Externalize", "Never Ask"],
+								"help": "What to do when TDN COMPs contain DATs or storage that will be lost on save. 'Ask Each Save' prompts on each save (recommended), 'Always Externalize' auto-externalizes at-risk DATs without asking, 'Never Ask' suppresses the check entirely. Prefer 'Ask' or 'Always Externalize' -- 'Never Ask' is an opt-in escape hatch for power users who accept the risk."
+							},
+							{
+								"name": "Openmanager",
+								"style": "Pulse",
+								"label": "Open Manager",
+								"startSection": true,
+								"help": "Opens the Embody Manager window, which provides a list view of all externalized operators with status, actions, and strategy management."
+							},
+							{
+								"name": "Closemanager",
+								"style": "Pulse",
+								"label": "Close Manager",
+								"help": "Closes the Embody Manager window."
+							}
+						],
+						"Tags": [
+							{
+								"name": "Toxtags",
+								"style": "Header",
+								"label": "tox Tags",
+								"help": "Tag strings and operator colors for TOX externalization. COMPs tagged with the Tox tag are externalized as .tox files."
+							},
+							{
+								"name": "Toxtagcolorr",
+								"style": "RGBA",
+								"label": "tox Tag Color",
+								"help": "Color applied to tox-tagged COMP operators in the network editor. Makes externalized COMPs visually identifiable.",
+								"values": [0.325, 0.8, 0.3]
+							},
+							{
+								"name": "Toxtag",
+								"style": "Str",
+								"label": ".tox Tag",
+								"help": "Tag string applied to COMP operators for .tox externalization. Operators with this tag are externalized as .tox files.",
+								"value": "tox"
+							},
+							{
+								"name": "Dattags",
+								"style": "Header",
+								"label": "DAT Tags",
+								"startSection": true,
+								"help": "Tag strings and operator colors for DAT externalization. DATs are tagged with format-specific tags (py, json, xml, etc.) and externalized to matching file types."
+							},
+							{
+								"name": "Dattagcolorr",
+								"style": "RGBA",
+								"label": "DAT Tag Color",
+								"help": "Color applied to DAT-tagged operators in the network editor. Makes externalized DATs visually identifiable.",
+								"values": [0.9, 0.3, 0.4]
+							},
+							{
+								"name": "Clonetagcolorr",
+								"style": "RGBA",
+								"label": "Clone Tag Color",
+								"help": "Color applied to clone-tagged operators in the network editor. Distinguishes cloned externalized operators from originals.",
+								"values": [1, 0.7, 0.1]
+							},
+							{
+								"name": "Pytag",
+								"style": "Str",
+								"label": ".py Tag",
+								"help": "Tag string for .py (Python) externalization. Applied to text DATs containing Python code.",
+								"value": "py"
+							},
+							{
+								"name": "Jsontag",
+								"style": "Str",
+								"label": ".json Tag",
+								"startSection": true,
+								"help": "Tag string for .json externalization. Applied to text DATs containing JSON data.",
+								"value": "json"
+							},
+							{
+								"name": "Xmltag",
+								"style": "Str",
+								"label": ".xml Tag",
+								"help": "Tag string for .xml externalization. Applied to text DATs containing XML data.",
+								"value": "xml"
+							},
+							{
+								"name": "Htmltag",
+								"style": "Str",
+								"label": ".html Tag",
+								"help": "Tag string for .html externalization. Applied to text DATs containing HTML content.",
+								"value": "html"
+							},
+							{
+								"name": "Glsltag",
+								"style": "Str",
+								"label": ".glsl Tag",
+								"startSection": true,
+								"help": "Tag string for .glsl externalization. Applied to text DATs containing GLSL shader code.",
+								"value": "glsl"
+							},
+							{
+								"name": "Fragtag",
+								"style": "Str",
+								"label": ".frag Tag",
+								"help": "Tag string for .frag externalization. Applied to text DATs containing fragment shader code.",
+								"value": "frag"
+							},
+							{
+								"name": "Verttag",
+								"style": "Str",
+								"label": ".vert Tag",
+								"help": "Tag string for .vert externalization. Applied to text DATs containing vertex shader code.",
+								"value": "vert"
+							},
+							{
+								"name": "Txttag",
+								"style": "Str",
+								"label": ".txt Tag",
+								"startSection": true,
+								"help": "Tag string for .txt externalization. Applied to text DATs containing plain text.",
+								"value": "txt"
+							},
+							{
+								"name": "Mdtag",
+								"style": "Str",
+								"label": ".md Tag",
+								"help": "Tag string for .md externalization. Applied to text DATs containing Markdown content.",
+								"value": "md"
+							},
+							{
+								"name": "Rtftag",
+								"style": "Str",
+								"label": ".rtf Tag",
+								"help": "Tag string for .rtf externalization. Applied to text DATs containing rich text format content.",
+								"value": "rtf"
+							},
+							{
+								"name": "Csvtag",
+								"style": "Str",
+								"label": ".csv Tag",
+								"startSection": true,
+								"help": "Tag string for .csv externalization. Applied to table DATs with comma-separated values.",
+								"value": "csv"
+							},
+							{
+								"name": "Tsvtag",
+								"style": "Str",
+								"label": ".tsv Tag",
+								"help": "Tag string for .tsv externalization. Applied to table DATs with tab-separated values.",
+								"value": "tsv"
+							},
+							{
+								"name": "Dattag",
+								"style": "Str",
+								"label": ".dat Tag",
+								"help": "Tag string for .dat externalization. Generic DAT externalization format.",
+								"value": "dat"
+							},
+							{
+								"name": "Tdntags",
+								"style": "Header",
+								"label": "TDN Tags",
+								"startSection": true,
+								"help": "Tag strings and operator colors for TDN externalization. COMPs tagged with the TDN tag have their children exported as human-readable .tdn JSON network files."
+							},
+							{
+								"name": "Tdntagcolor",
+								"style": "RGBA",
+								"label": "TDN Tag Color",
+								"default": 0.3,
+								"help": "Color applied to TDN-tagged COMP operators in the network editor. Makes TDN-strategy COMPs visually identifiable."
+							},
+							{
+								"name": "Tdntag",
+								"style": "Str",
+								"label": ".tdn Tag",
+								"help": "Tag string for .tdn externalization. Applied to COMPs whose children are exported as human-readable JSON network files.",
+								"value": "tdn"
+							}
+						],
+						"TDN": [
+							{
+								"name": "Tdnmode",
+								"style": "Menu",
+								"label": "TDN Mode",
+								"startSection": true,
+								"default": "export",
+								"menuNames": ["off", "export", "full"],
+								"menuLabels": ["Off", "Export-on-Save", "Roundtrip (Experimental)"],
+								"help": "Three-mode master for the TDN subsystem. Off = no TDN runtime (.tdn files on disk are preserved, Embody simply stops touching them). Export-on-Save (recommended) = write .tdn on save, .toe stays the source of truth, MCP reads live state via read_tdn. Roundtrip (Experimental) = bidirectional strip/restore of COMPs at save and open; may hit edge cases with extension reload timing on deeply-nested TDN COMPs."
+							},
+							{
+								"name": "Tdncascade",
+								"style": "Toggle",
+								"label": "Cascade to Children",
+								"startSection": true,
+								"help": "When tagging a COMP for TDN, automatically tag all child COMPs so each gets its own .tdn file."
+							},
+							{
+								"name": "Tdncascadewarn",
+								"style": "Menu",
+								"label": "Large TDN Warning",
+								"default": "ask",
+								"menuNames": ["ask", "quiet"],
+								"menuLabels": ["Ask", "Quiet"],
+								"help": "Controls whether a warning dialog is shown when a TDN file exceeds 5 MB. Set automatically when dismissed."
+							},
+							{
+								"name": "Embeddatsintdns",
+								"style": "Toggle",
+								"label": "Embed DATs (default)",
+								"startSection": true,
+								"help": "When enabled, DAT content (text and table data) is included in TDN exports by default. Can be overridden per-export. Disabling reduces file size but loses DAT content."
+							},
+							{
+								"name": "Embedstorageintdns",
+								"style": "Toggle",
+								"label": "Embed Storage (default)",
+								"default": true,
+								"help": "Include Python storage entries in TDN exports. Disable for COMPs with large storage to reduce file size. Can be overridden per-COMP from the tagging menu."
+							},
+							{
+								"name": "Tdncreateonstart",
+								"style": "Toggle",
+								"label": "TDN Create on Start",
+								"startSection": true,
+								"default": true,
+								"help": "When enabled, reconstructs TDN-strategy COMP children from .tdn files on disk when the project opens. Required for TDN round-trip workflow where children are stripped on save."
+							},
+							{
+								"name": "Tdnstriponsave",
+								"style": "Toggle",
+								"label": "Strip on Save",
+								"default": true,
+								"help": "When enabled, strips children from TDN-strategy COMPs during project save. Children are recreated on next open via TDN Create on Start. Keeps .toe files minimal."
+							},
+							{
+								"name": "Tdnpalettehandling",
+								"style": "Menu",
+								"label": "Palette Handling",
+								"startSection": true,
+								"default": "ask",
+								"menuNames": ["ask", "blackbox", "fullexport"],
+								"menuLabels": ["Ask", "Black Box", "Full Export"],
+								"help": "How to handle TD palette COMPs (e.g. abletonLink, Widget components) during TDN export. Ask: prompt on first encounter per COMP. Black Box: reference the palette and skip internal children -- the correct choice for stock palette components. Full Export: export all internals -- use when the palette COMP has been heavily customized internally.",
+								"value": "blackbox"
+							},
+							{
+								"name": "Tdnfile",
+								"style": "File",
+								"label": "TDN File",
+								"startSection": true,
+								"help": "Path to a .tdn file to import. Select a file, set the Network Path target, then pulse Import TDN."
+							},
+							{
+								"name": "Networkpath",
+								"style": "COMP",
+								"label": "Network Path",
+								"help": "Target COMP where the TDN file will be imported. Operators from the .tdn are created as children of this COMP."
+							},
+							{
+								"name": "Importtdn",
+								"style": "Pulse",
+								"label": "Import TDN",
+								"help": "Imports the specified TDN File into the Network Path target. Creates all operators, sets parameters, connections, and positions."
+							}
+						],
+						"Envoy": [
+							{
+								"name": "Aiclient",
+								"style": "Menu",
+								"label": "AI Client",
+								"default": "0",
+								"menuNames": ["claudecode", "cursor", "copilot", "windsurf", "none"],
+								"menuLabels": ["Claude Code", "Cursor", "GitHub Copilot", "Windsurf", "None"],
+								"help": "Selects the AI client used with Envoy. Determines which MCP configuration file format is generated (e.g. .mcp.json for Claude Code).",
+								"value": "claudecode"
+							},
+							{
+								"name": "Envoyenable",
+								"style": "Toggle",
+								"label": "Envoy Enable",
+								"help": "Enables/disables the Envoy MCP server. When enabled, starts an HTTP server that exposes TouchDesigner operations to Claude Code and other MCP clients.",
+								"value": true
+							},
+							{
+								"name": "Envoyport",
+								"style": "Int",
+								"label": "Envoy Port",
+								"default": 9876,
+								"help": "Port number for the Envoy MCP server (default: 9870). Changing while running automatically restarts the server on the new port.",
+								"value": 9870
+							},
+							{
+								"name": "Envoystatus",
+								"style": "Str",
+								"label": "Envoy Status",
+								"readOnly": true,
+								"help": "Current status of the Envoy MCP server (read-only). Shows Running, Stopped, or error information.",
+								"value": "Running on port 9870"
+							}
+						],
+						"Logs": [
+							{
+								"name": "Verbose",
+								"style": "Toggle",
+								"label": "Verbose (Debug)",
+								"help": "Enables debug-level logging. When off, only INFO and above are logged. Enable for detailed diagnostics when troubleshooting issues."
+							},
+							{
+								"name": "Print",
+								"style": "Toggle",
+								"label": "Print to Textport",
+								"help": "Echoes all log messages to the TouchDesigner textport. Useful for monitoring Embody activity in real-time.",
+								"value": true
+							},
+							{
+								"name": "Logtofile",
+								"style": "Toggle",
+								"label": "Log to File",
+								"help": "Writes log messages to a file on disk. Files are saved to the Log Folder with automatic rotation at 10 MB.",
+								"value": true
+							},
+							{
+								"name": "Logfolder",
+								"style": "Folder",
+								"label": "Log Folder",
+								"help": "Folder where log files are saved. Defaults to dev/logs/ in the project directory. Files are named <project>_YYMMDD.log.",
+								"value": "logs"
+							}
+						],
+						"UI": [
+							{
+								"name": "Enablekeyboardshortcuts",
+								"style": "Toggle",
+								"label": "Enable Keyboard Shortcuts",
+								"help": "Enables/disables all Embody keyboard shortcuts. Turn off if shortcuts conflict with other tools.",
+								"value": true
+							},
+							{
+								"name": "Addtagshort",
+								"style": "Str",
+								"label": "Add Externalization Tag",
+								"startSection": true,
+								"readOnly": true,
+								"help": "Keyboard shortcut for adding an externalization tag to the selected operator(s). Default: double-press Left Ctrl.",
+								"value": "lctrl-lctrl (lclick op & press 2x)"
+							},
+							{
+								"name": "Openmanagershort",
+								"style": "Str",
+								"label": "Open Manager",
+								"readOnly": true,
+								"help": "Keyboard shortcut for opening the Embody Manager window.",
+								"value": "ctrl/cmd + lshift + o"
+							},
+							{
+								"name": "Initializeupdateshort",
+								"style": "Str",
+								"label": "Initialize/Update All",
+								"readOnly": true,
+								"help": "Keyboard shortcut for triggering Initialize/Update All (Ctrl+Shift+U). Saves all dirty externalized operators to disk.",
+								"value": "ctrl/cmd + lshift + u"
+							},
+							{
+								"name": "Saveshort",
+								"style": "Str",
+								"label": "Update Current COMP",
+								"readOnly": true,
+								"help": "Keyboard shortcut for updating/saving the current COMP to its externalized file.",
+								"value": "ctrl/cmd + alt + u"
+							},
+							{
+								"name": "Exportprojecttdn",
+								"style": "Str",
+								"label": "Export Project to TDN",
+								"startSection": true,
+								"default": "ctrl/cmd + lshift + e",
+								"readOnly": true,
+								"help": "Export the entire project network to a single .tdn file at your project root."
+							},
+							{
+								"name": "Exportcomptdn",
+								"style": "Str",
+								"label": "Export Current COMP to TDN",
+								"default": "ctrl/cmd + alt + e",
+								"readOnly": true,
+								"help": "Export the current COMP network to a .tdn file."
+							},
+							{
+								"name": "Textcolor",
+								"style": "RGBA",
+								"label": "Text Color",
+								"startSection": true,
+								"help": "Text color used throughout the Embody UI (toolbar, manager, dialogs).",
+								"values": [0.59472, 0.63, 0.599424, 1]
+							},
+							{
+								"name": "Backgroundcolor",
+								"style": "RGBA",
+								"label": "Background Color",
+								"help": "Background color for the Embody UI panels and windows.",
+								"values": [0.0968, 0.121, 0.121, 0.8]
+							},
+							{
+								"name": "Buttonbackgroundcolor",
+								"style": "RGBA",
+								"label": "Button Background Color",
+								"help": "Background color for buttons in the Embody UI.",
+								"values": [0.1246, 0.14, 0.13, 1]
+							},
+							{
+								"name": "Listheadercolor",
+								"style": "RGBA",
+								"label": "List Header Color",
+								"help": "Header row color in the Manager list view.",
+								"values": [0.089419, 0.121, 0.103104, 1]
+							},
+							{
+								"name": "Listrowcolor",
+								"style": "RGBA",
+								"label": "List Row Color",
+								"help": "Default row color in the Manager list view.",
+								"values": [0.1246, 0.14, 0.13, 1]
+							},
+							{
+								"name": "Listrowselectcolor",
+								"style": "RGBA",
+								"label": "List Row Select Color",
+								"help": "Selected row highlight color in the Manager list view.",
+								"values": [0.220088, 0.244, 0.221283, 1]
+							},
+							{
+								"name": "Savedcolor",
+								"style": "RGBA",
+								"label": "Saved Color",
+								"help": "Color indicator for operators that are saved and up-to-date (not dirty).",
+								"values": [0.227574, 0.423, 0.289133, 0.5]
+							},
+							{
+								"name": "Dirtycolor",
+								"style": "RGBA",
+								"label": "Dirty Color",
+								"help": "Color indicator for operators that have unsaved changes (dirty state).",
+								"values": [0.675, 0.25668, 0.2268, 1]
+							},
+							{
+								"name": "Dirtyparcolor",
+								"style": "RGBA",
+								"label": "Dirty Par Color",
+								"help": "Color indicator for parameters that have been modified since last save.",
+								"values": [0.49, 0.321897, 0.16464, 1]
+							},
+							{
+								"name": "Taggingmenucolor",
+								"style": "RGBA",
+								"label": "Tagging Menu Color",
+								"help": "Background color for the tagging menu popup.",
+								"values": [0.2, 0.2, 0.2, 1]
+							},
+							{
+								"name": "Highlightcolor",
+								"style": "RGBA",
+								"label": "Highlight Color",
+								"help": "Accent/highlight color used for interactive elements in the Embody UI.",
+								"values": [1, 1, 1, 1]
+							},
+							{
+								"name": "Tdnsavedcolor",
+								"style": "RGBA",
+								"label": "TDN Saved Color",
+								"help": "Color indicator for TDN-strategy operators that are saved and up-to-date.",
+								"values": [0.153552, 0.376081, 0.457, 1]
+							}
+						],
+						"About": [
+							{
+								"name": "Version",
+								"style": "Str",
+								"startSection": true,
+								"readOnly": true,
+								"help": "Embody version string (read-only).",
+								"value": "5.0.403"
+							},
+							{
+								"name": "Touchbuild",
+								"style": "Str",
+								"label": "Touch Build",
+								"readOnly": true,
+								"help": "TouchDesigner build number this version was developed on (read-only).",
+								"value": "2025.32460"
+							},
+							{
+								"name": "Author",
+								"style": "Str",
+								"readOnly": true,
+								"help": "Embody author (read-only).",
+								"value": "Dylan Roscover"
+							},
+							{
+								"name": "Build",
+								"style": "Int",
+								"label": "Build Number",
+								"readOnly": true,
+								"help": "Embody build number (read-only). Incremented with each release.",
+								"value": 449
+							},
+							{
+								"name": "Github",
+								"style": "Pulse",
+								"label": "GitHub",
+								"startSection": true,
+								"help": "Opens the Embody GitHub repository in your web browser."
+							},
+							{
+								"name": "Date",
+								"style": "Str",
+								"label": "Build Date",
+								"readOnly": true,
+								"help": "Date of this Embody build (read-only).",
+								"value": "2026-05-02 19:01:40 UTC"
+							},
+							{
+								"name": "Help",
+								"style": "Pulse",
+								"help": "Opens the Embody help documentation."
+							}
+						]
+					},
+					"flags": ["display", "viewer"],
+					"position": [450, 650],
+					"size": [160, 92],
+					"color": [0.3, 0.5, 0.9],
+					"storage": {
+						"claudius_running": false,
+						"_tdn_restore_failures": ["/embody/base1"],
+						"expand_order": [],
+						"_start_in_progress": true
+					},
+					"children": [
+						{
+							"name": "help",
+							"type": "opviewerCOMP",
+							"parameters": {
+								"opviewer": "./text_help",
+								"w": 500,
+								"h": 600,
+								"display": false,
+								"resizecomp": "=me",
+								"repocomp": "=me",
+								"topsmoothness": "mipmap",
+								"borderover": false,
+								"reloadbuiltin": false
+							},
+							"position": [196, 675],
+							"size": [142, 155],
+							"color": [0.3, 0.5, 0.9],
+							"children": [
+								{
+									"name": "text_help",
+									"type": "textDAT",
+									"parameters": {
+										"language": "python"
+									},
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								}
+							]
+						},
+						{
+							"name": "list",
+							"type": "containerCOMP",
+							"parameters": {
+								"w": 996,
+								"h": 40,
+								"hmode": "fill",
+								"vmode": "fill",
+								"alignorder": 1,
+								"resizeb": true,
+								"resizewmin": 400,
+								"resizewmax": 3840,
+								"resizehmin": 40,
+								"resizehmax": 2160,
+								"bgcolorr": "=parent.Embody.par.Backgroundcolorr",
+								"bgcolorg": "=parent.Embody.par.Backgroundcolorg",
+								"bgcolorb": "=parent.Embody.par.Backgroundcolorb",
+								"bgalpha": "=parent.Embody.par.Backgroundcolora",
+								"borderover": false,
+								"marginl": 5,
+								"marginr": 5,
+								"reloadbuiltin": false
+							},
+							"position": [250, 50],
+							"size": [257, 250],
+							"color": [0.3, 0.5, 0.9],
+							"comp_inputs": ["manager"],
+							"children": [
+								{
+									"name": "list1",
+									"type": "listCOMP",
+									"parameters": {
+										"callbacks": "=op('list_callbacks')",
+										"rows": "=op('inject_parents').numRows",
+										"cols": 8,
+										"lockfirstrow": true,
+										"hscrollbar": false,
+										"offcellcallbacks": true,
+										"hmode": "fill",
+										"vmode": "fill",
+										"resizecomp": "=me",
+										"repocomp": "=me"
+									},
+									"position": [445, 0],
+									"size": [160, 130],
+									"color": [0.3, 0.5, 0.9]
+								},
+								{
+									"name": "select1",
+									"type": "selectDAT",
+									"parameters": {
+										"dat": "=parent.Embody.par.Externalizations"
+									},
+									"position": [-275, 0]
+								},
+								{
+									"name": "inject_parents",
+									"type": "scriptDAT",
+									"parameters": {
+										"callbacks": "inject_parents_callbacks"
+									},
+									"position": [-100, 0],
+									"size": [130, 90],
+									"color": [0.67, 0.67, 0.67],
+									"inputs": ["select1"]
+								},
+								{
+									"name": "list_callbacks",
+									"type": "textDAT",
+									"parameters": {
+										"language": "python"
+									},
+									"position": [625, 0],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "inject_parents_callbacks",
+									"type": "textDAT",
+									"parameters": {
+										"language": "python"
+									},
+									"flags": ["viewer"],
+									"position": [-100, -120],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4],
+									"dock": "inject_parents"
+								}
+							]
+						},
+						{
+							"name": "fifo1",
+							"type": "fifoDAT",
+							"parameters": {
+								"callbacks": "fifo1_callbacks",
+								"fromop": "=parent()",
+								"maxlines": 100
+							},
+							"position": [-700, 400],
+							"size": [130, 90],
+							"color": [0.67, 0.67, 0.67]
+						},
+						{
+							"name": "null2",
+							"type": "nullCHOP",
+							"parameters": {
+								"cooktype": "selective",
+								"autoexportroot": "=parent()"
+							},
+							"position": [-325, -525],
+							"size": [130, 90],
+							"inputs": ["select1"]
+						},
+						{
+							"name": "TDNExt",
+							"type": "textDAT",
+							"parameters": {
+								"language": "python"
+							},
+							"position": [-300, 400],
+							"size": [130, 90],
+							"color": [0.9, 0.3, 0.4]
+						},
+						{
+							"name": "tagger",
+							"type": "containerCOMP",
+							"parameters": {
+								"w": 180,
+								"h": "=28 * me.fetch('visible_count', op('./tags').numRows) + 2",
+								"display": false,
+								"bgcolorr": "=parent.Embody.par.Listrowcolorr",
+								"bgcolorg": "=parent.Embody.par.Listrowcolorg",
+								"bgcolorb": "=parent.Embody.par.Listrowcolorb",
+								"bgalpha": 1,
+								"borderar": 0.26426,
+								"borderag": 0.298469,
+								"borderab": 0.362,
+								"align": "verttb",
+								"parentshortcut": "menu",
+								"reloadbuiltin": false
+							},
+							"position": [900, 225],
+							"size": [108, 155],
+							"color": [0.3, 0.5, 0.9],
+							"children": [
+								{
+									"name": "tags",
+									"type": "nullDAT",
+									"flags": ["viewer"],
+									"position": [-400, 0],
+									"size": [130, 90],
+									"inputs": ["switch_family"]
+								},
+								{
+									"name": "header",
+									"type": "containerCOMP",
+									"parameters": {
+										"h": 28,
+										"hmode": "fill",
+										"bgcolorr": "=parent.Embody.par.Listheadercolorr",
+										"bgcolorg": "=parent.Embody.par.Listheadercolorg",
+										"bgcolorb": "=parent.Embody.par.Listheadercolorb",
+										"bgalpha": "=parent.Embody.par.Listheadercolora",
+										"borderover": false,
+										"reloadbuiltin": false
+									},
+									"flags": ["viewer"],
+									"position": [0, 275],
+									"size": [160, 76],
+									"color": [0.3, 0.5, 0.9],
+									"palette_clone": true
+								},
+								{
+									"name": "button0",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "=op('tags')[me.digits, 'label']",
+										"colorr": "=parent.Embody.par.Taggingmenucolorr",
+										"colorg": "=parent.Embody.par.Taggingmenucolorg",
+										"colorb": "=parent.Embody.par.Taggingmenucolorb",
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [-225, 175],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button1",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "×  Remove tox",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [-225, -276],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button2",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add py",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [25, -276],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button3",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add json",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [275, -276],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button4",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add xml",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [525, -276],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button5",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add html",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [-225, -451],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button6",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add glsl",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [25, -451],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button7",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add frag",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [275, -451],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button8",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add vert",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [525, -451],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button9",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add txt",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [-225, -626],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "btn_save",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "↓  Save tdn",
+										"colorr": 0.2,
+										"colorg": 0.2,
+										"colorb": 0.2,
+										"alignorder": 0.5,
+										"display": false
+									},
+									"position": [25, 100],
+									"size": [160, 134],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontsize": 12,
+												"linespacing": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"textpaddingl": 12,
+												"textpaddingr": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingb": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingt": "=parent().par[me.curPar.name] or me.curPar.val",
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 96]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button10",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add md",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [25, -626],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button11",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add rtf",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [275, -626],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button12",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add csv",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [525, -626],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button13",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add tsv",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [-225, -801],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button14",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add dat",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [25, -801],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "button15",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "+  Add tdn",
+										"colorr": 0.2,
+										"colorg": "=parent.Embody.par.Taggingmenucolorg if me.digits % 2 else parent.Embody.par.Taggingmenucolorg - 0.05",
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false,
+										"topsmoothness": "mipmap",
+										"reloadbuiltin": false,
+										"relpath": "inherit"
+									},
+									"position": [275, -801],
+									"size": [160, 76],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "onlyshrink",
+												"fontsize": 12,
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"fontalpha": "=parent.Embody.par.Textcolora",
+												"textpaddingl": 12,
+												"textpaddingr": 3,
+												"textpaddingb": 3,
+												"textpaddingt": 3,
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().panel.state + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false,
+												"reloadbuiltin": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 64]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252"
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "btn_embed",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "⊞  Embed DATs in tdn",
+										"colorr": 0.2,
+										"colorg": 0.2,
+										"colorb": 0.2,
+										"alignorder": 0.65,
+										"display": false
+									},
+									"position": [260, 275],
+									"size": [160, 134],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontsize": 12,
+												"linespacing": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"textpaddingl": 12,
+												"textpaddingr": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingb": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingt": "=parent().par[me.curPar.name] or me.curPar.val",
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 96]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "/embody/Embody/tagger/btn_embed",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "btn_reload",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "↻  Reload tdn",
+										"colorr": 0.2,
+										"colorg": 0.2,
+										"colorb": 0.2,
+										"alignorder": 0.6,
+										"display": false
+									},
+									"position": [-280, 275],
+									"size": [160, 134],
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontsize": 12,
+												"linespacing": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"textpaddingl": 12,
+												"textpaddingr": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingb": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingt": "=parent().par[me.curPar.name] or me.curPar.val",
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 96]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "btn_remove",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "Remove externalization",
+										"colorr": 0.2,
+										"colorg": 0.2,
+										"colorb": 0.2,
+										"alignorder": 11,
+										"display": false
+									},
+									"position": [-1000, 275],
+									"size": [160, 134],
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontsize": 12,
+												"linespacing": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"textpaddingl": 12,
+												"textpaddingr": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingb": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingt": "=parent().par[me.curPar.name] or me.curPar.val",
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 96]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "parameter1",
+									"type": "parameterDAT",
+									"parameters": {
+										"ops": "=parent.Embody",
+										"parameters": "*tag",
+										"label": true
+									},
+									"flags": ["viewer"],
+									"position": [-1000, 0],
+									"size": [130, 90]
+								},
+								{
+									"name": "btn_restore",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "Restore from tdn",
+										"colorr": 0.2,
+										"colorg": 0.2,
+										"colorb": 0.2,
+										"alignorder": 0.5,
+										"display": false
+									},
+									"position": [-640, 275],
+									"size": [160, 134],
+									"storage": {
+										"_tdn_palette_handling": "blackbox"
+									},
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontsize": 12,
+												"linespacing": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"textpaddingl": 12,
+												"textpaddingr": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingb": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingt": "=parent().par[me.curPar.name] or me.curPar.val",
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 96]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "replicator1",
+									"type": "replicatorCOMP",
+									"parameters": {
+										"template": "tags",
+										"opprefix": "button",
+										"master": "button0",
+										"destination": "=parent()",
+										"callbacks": "replicator1_callbacks",
+										"layoutorigin1": "=me.nodeX",
+										"layoutorigin2": "=me.nodeY - 200",
+										"reloadbuiltin": false
+									},
+									"flags": ["viewer"],
+									"position": [-225, 0],
+									"size": [160, 130],
+									"color": [0.3, 0.5, 0.9]
+								},
+								{
+									"name": "select_dats",
+									"type": "selectDAT",
+									"parameters": {
+										"firstrow": true,
+										"extractrows": "bynames",
+										"rownames": "^Toxtag ^Toxexternalchildrentag"
+									},
+									"position": [-800, -75],
+									"inputs": ["parameter1"]
+								},
+								{
+									"name": "btn_openfile",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "◎  Reveal in Finder",
+										"colorr": 0.2,
+										"colorg": 0.2,
+										"colorb": 0.2,
+										"alignorder": 10,
+										"display": false
+									},
+									"position": [-820, 275],
+									"size": [160, 134],
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontsize": 12,
+												"linespacing": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"textpaddingl": 12,
+												"textpaddingr": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingb": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingt": "=parent().par[me.curPar.name] or me.curPar.val",
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 96]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "btn_portable",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "↗  Export portable tox",
+										"colorr": 0.2,
+										"colorg": 0.2,
+										"colorb": 0.2,
+										"alignorder": 1,
+										"display": false
+									},
+									"position": [-460, 275],
+									"size": [160, 134],
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontsize": 12,
+												"linespacing": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"textpaddingl": 12,
+												"textpaddingr": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingb": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingt": "=parent().par[me.curPar.name] or me.curPar.val",
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 96]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "..",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "select_comps",
+									"type": "selectDAT",
+									"parameters": {
+										"firstrow": true,
+										"extractrows": "bynames",
+										"rownames": "Toxtag Tdntag Toxexternalchildrentag"
+									},
+									"position": [-800, -175],
+									"inputs": ["parameter1"]
+								},
+								{
+									"name": "switch_family",
+									"type": "switchDAT",
+									"parameters": {
+										"index": 1
+									},
+									"flags": ["viewer"],
+									"position": [-600, 0],
+									"size": [130, 90],
+									"inputs": ["parameter1", "select_dats", "select_comps"]
+								},
+								{
+									"name": "btn_embed_storage",
+									"type": "buttonCOMP",
+									"parameters": {
+										"label": "⊞  Embed storage in tdn  ✓",
+										"colorr": 0.2,
+										"colorg": 0.2,
+										"colorb": 0.2,
+										"alignorder": 0.66,
+										"display": false
+									},
+									"position": [440, 275],
+									"size": [160, 134],
+									"children": [
+										{
+											"name": "out1",
+											"type": "outCHOP",
+											"position": [275, 175],
+											"inputs": ["par1"]
+										},
+										{
+											"name": "par1",
+											"type": "parameterCHOP",
+											"position": [65, 175]
+										},
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent().par.label",
+												"type": "multiline",
+												"legacyfontselection": true,
+												"scaletofit": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontsize": 12,
+												"linespacing": "=parent().par[me.curPar.name] or me.curPar.val",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"textpaddingl": 12,
+												"textpaddingr": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingb": "=parent().par[me.curPar.name] or me.curPar.val",
+												"textpaddingt": "=parent().par[me.curPar.name] or me.curPar.val",
+												"alignx": "left",
+												"hmode": "fill",
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Listrowselectcolorr if parent().panel.rollover else parent.Embody.par.Listrowcolorr",
+												"bgcolorg": "=parent.Embody.par.Listrowselectcolorg if parent().panel.rollover else parent.Embody.par.Listrowcolorg",
+												"bgcolorb": "=parent.Embody.par.Listrowselectcolorb if parent().panel.rollover else parent.Embody.par.Listrowcolorb",
+												"bgalpha": 1,
+												"borderar": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorr + .2",
+												"borderag": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorg + .2",
+												"borderab": "=[c/.5 for c in [.23, .4, .3, .6]][parent().par.value0 + 2*parent().panel.rollover] * parent().par.colorb + .2",
+												"borderover": false
+											},
+											"flags": ["viewer"],
+											"position": [74, 26],
+											"size": [113, 96]
+										},
+										{
+											"name": "parexec1",
+											"type": "parameterexecuteDAT",
+											"parameters": {
+												"op": "/embody/Embody/tagger/btn_embed",
+												"pars": "value0",
+												"onpulse": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [66, -83],
+											"size": [128, 66]
+										},
+										{
+											"name": "panelexec1",
+											"type": "panelexecuteDAT",
+											"parameters": {
+												"panels": "=parent()",
+												"panelvalue": "state",
+												"offtoon": false,
+												"defaultreadencoding": "cp1252",
+												"loadonstart": true
+											},
+											"flags": ["viewer"],
+											"position": [247, -81],
+											"size": [126, 62]
+										}
+									]
+								},
+								{
+									"name": "replicator1_callbacks",
+									"type": "textDAT",
+									"parameters": {
+										"language": "python"
+									},
+									"flags": ["viewer"],
+									"position": [-225, -160],
+									"size": [160, 130],
+									"color": [0.9, 0.3, 0.4],
+									"dock": "replicator1"
+								}
+							]
+						},
+						{
+							"name": "timer1",
+							"type": "timerCHOP",
+							"parameters": {
+								"active": "never",
+								"deferpars": true,
+								"length": 30,
+								"lengthunits": "frames",
+								"delayunits": "samples",
+								"maxcycles": 2,
+								"callbacks": "timer_callbacks",
+								"outfraction": false,
+								"outready": false,
+								"outdone": false,
+								"exttcop": "=tdu.Timecode()",
+								"rate": "=me.time.rate",
+								"autoexportroot": "=parent()"
+							},
+							"position": [-625, -275],
+							"size": [130, 90]
+						},
+						{
+							"name": "execute",
+							"type": "executeDAT",
+							"parameters": {
+								"fromop": "=parent()",
+								"start": true,
+								"create": true,
+								"projectpresave": true,
+								"projectpostsave": true,
+								"defaultreadencoding": "cp1252",
+								"language": "input"
+							},
+							"flags": ["display"],
+							"position": [-300, 200],
+							"size": [130, 90],
+							"color": [0.9, 0.3, 0.4]
+						},
+						{
+							"name": "manager",
+							"type": "containerCOMP",
+							"parameters": {
+								"y": 13,
+								"w": 1080,
+								"h": 440,
+								"resizer": true,
+								"resizeb": true,
+								"resizewmin": 250,
+								"resizewmax": 3840,
+								"resizehmin": 50,
+								"resizehmax": 2160,
+								"topsmoothness": "mipmap",
+								"borderar": "=parent.Embody.par.Textcolorr * 0.5",
+								"borderag": "=parent.Embody.par.Textcolorg * 0.5",
+								"borderab": "=parent.Embody.par.Textcolorb * 0.5",
+								"borderaalpha": "=parent.Embody.par.Textcolora",
+								"leftborder": "bordera",
+								"rightborder": "bordera",
+								"bottomborder": "bordera",
+								"topborder": "bordera",
+								"align": "verttb",
+								"reloadbuiltin": false
+							},
+							"position": [650, 250],
+							"size": [160, 92],
+							"color": [0.3, 0.5, 0.9]
+						},
+						{
+							"name": "parexec",
+							"type": "parameterexecuteDAT",
+							"parameters": {
+								"op": "..",
+								"pars": "*",
+								"defaultreadencoding": "cp1252",
+								"language": "input"
+							},
+							"position": [-300, 100],
+							"size": [130, 90],
+							"color": [0.9, 0.3, 0.4]
+						},
+						{
+							"name": "select1",
+							"type": "selectCHOP",
+							"parameters": {
+								"channames": "click",
+								"autoexportroot": "=parent()"
+							},
+							"position": [-475, -525],
+							"size": [130, 90],
+							"inputs": ["mousein1"]
+						},
+						{
+							"name": "toolbar",
+							"type": "containerCOMP",
+							"parameters": {
+								"y": 368,
+								"w": 996,
+								"h": 40,
+								"layer": 1000,
+								"hmode": "fill",
+								"resizewmin": 400,
+								"resizewmax": 3840,
+								"resizehmin": 40,
+								"resizehmax": 2160,
+								"bgcolorr": "=parent.Embody.par.Backgroundcolorr",
+								"bgcolorg": "=parent.Embody.par.Backgroundcolorg",
+								"bgcolorb": "=parent.Embody.par.Backgroundcolorb",
+								"bgalpha": "=parent.Embody.par.Backgroundcolora",
+								"topsmoothness": "mipmap",
+								"borderover": false,
+								"justifyv": "center",
+								"reloadbuiltin": false
+							},
+							"sequences": {
+								"ext": [
+									{
+										"object": "op('./ToolbarExt').module.ToolbarExt(me)",
+										"name": "ToolbarExt",
+										"promote": true
+									}
+								]
+							},
+							"position": [300, 350],
+							"size": [160, 76],
+							"color": [0.3, 0.5, 0.9],
+							"storage": {
+								"_tip_trace": {
+									"btn": "close",
+									"text": "Clear filter",
+									"text_width": 60.3,
+									"tip_w": 80,
+									"container_x": 726,
+									"container_w": 270,
+									"btn_x": 244,
+									"btn_w": 26,
+									"tip_x": 914,
+									"toolbar_w": 996,
+									"btn_center": 983,
+									"tip_center": 954,
+									"offset": -29
+								}
+							},
+							"comp_inputs": ["manager"],
+							"children": [
+								{
+									"name": "tooltip",
+									"type": "containerCOMP",
+									"parameters": {
+										"x": 273,
+										"y": 40,
+										"w": 213,
+										"h": 22,
+										"layer": 10,
+										"alignallow": "ignore",
+										"display": false,
+										"clickthrough": true,
+										"bgcolorr": 0.13,
+										"bgcolorg": 0.13,
+										"bgcolorb": 0.13,
+										"bgalpha": 0.95
+									},
+									"position": [800, -200],
+									"size": [160, 130],
+									"color": [0.3, 0.5, 0.9],
+									"children": [
+										{
+											"name": "text",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "Export project TDN (Ctrl+Shift+E)",
+												"callbacks": "text_callbacks",
+												"font": "Open Sans",
+												"fontsize": 10,
+												"fontcolorr": 0.8,
+												"fontcolorg": 0.8,
+												"fontcolorb": 0.8,
+												"hmode": "fill",
+												"vmode": "fill"
+											},
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "text_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "text"
+										}
+									]
+								},
+								{
+									"name": "ToolbarExt",
+									"type": "textDAT",
+									"parameters": {
+										"language": "python"
+									},
+									"position": [200, -200],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "tip_measure",
+									"type": "textTOP",
+									"parameters": {
+										"text": "Export project TDN (Ctrl+Shift+E)",
+										"font": "Open Sans",
+										"fontsizex": 10,
+										"fontsizey": 10
+									},
+									"position": [1400, -200],
+									"size": [130, 90],
+									"color": [0.67, 0.67, 0.67]
+								},
+								{
+									"name": "container_left",
+									"type": "containerCOMP",
+									"parameters": {
+										"w": 852,
+										"h": 26,
+										"borderover": false,
+										"align": "horizlr",
+										"reloadbuiltin": false
+									},
+									"flags": ["viewer"],
+									"size": [160, 76],
+									"color": [0.3, 0.5, 0.9],
+									"children": [
+										{
+											"name": "status",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=str(parent.Embody.DirtyCount()) + ' dirty' if parent.Embody.extensionsReady and parent.Embody.DirtyCount() else ''",
+												"callbacks": "new_status_callbacks",
+												"font": "Open Sans",
+												"fontsize": 9,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 80,
+												"vmode": "fill",
+												"alignorder": -100,
+												"display": false,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb",
+												"marginl": 3
+											},
+											"position": [800, -200],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "disable",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "󰐥",
+												"callbacks": "new_disable_callbacks",
+												"font": "Material Design Icons",
+												"fontsize": 11,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 36,
+												"vmode": "fill",
+												"clickthrough": true,
+												"bgcolorr": "=(0.13 if parent.Embody.par.Status.eval() == 'Enabled' else parent.Embody.par.Buttonbackgroundcolorr.eval()) + (0.08 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=(0.22 if parent.Embody.par.Status.eval() == 'Enabled' else parent.Embody.par.Buttonbackgroundcolorg.eval()) + (0.08 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=(0.15 if parent.Embody.par.Status.eval() == 'Enabled' else parent.Embody.par.Buttonbackgroundcolorb.eval()) + (0.08 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "perform",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "󰓅",
+												"font": "Material Design Icons",
+												"fontsize": 11,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 36,
+												"vmode": "fill",
+												"alignorder": -50,
+												"clickthrough": true,
+												"bgcolorr": "=(0.50 if parent.Embody.par.Performmode.eval() else parent.Embody.par.Buttonbackgroundcolorr.eval()) + (0.08 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=(0.25 if parent.Embody.par.Performmode.eval() else parent.Embody.par.Buttonbackgroundcolorg.eval()) + (0.08 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=(0.05 if parent.Embody.par.Performmode.eval() else parent.Embody.par.Buttonbackgroundcolorb.eval()) + (0.08 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "refresh",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "󰑐",
+												"callbacks": "new_refresh_callbacks",
+												"font": "Material Design Icons",
+												"fontsize": 11,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 36,
+												"vmode": "fill",
+												"alignorder": 400,
+												"display": "=1 if parent.Embody.par.Status == 'Enabled' else 0",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"position": [200, 0],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9],
+											"storage": {
+												"pressed": false
+											}
+										},
+										{
+											"name": "save_comp",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "󰆓",
+												"callbacks": "new_save_comp_callbacks",
+												"font": "Material Design Icons",
+												"fontsize": 11,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 36,
+												"vmode": "fill",
+												"alignorder": 650,
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"position": [1400, 0],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9],
+											"storage": {
+												"pressed": false
+											}
+										},
+										{
+											"name": "export_tdn",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "󰈇",
+												"callbacks": "new_export_tdn_callbacks",
+												"font": "Material Design Icons",
+												"fontsize": 11,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 36,
+												"vmode": "fill",
+												"alignorder": 1000,
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"position": [0, -200],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "import_tdn",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "󰋺",
+												"callbacks": "new_import_tdn_callbacks",
+												"font": "Material Design Icons",
+												"fontsize": 11,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 36,
+												"vmode": "fill",
+												"alignorder": 925,
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"position": [400, -200],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9],
+											"storage": {
+												"pressed": false
+											}
+										},
+										{
+											"name": "initialize",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "󰓦",
+												"callbacks": "new_initialize_callbacks",
+												"font": "Material Design Icons",
+												"fontsize": 11,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 36,
+												"vmode": "fill",
+												"alignorder": 600,
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"position": [600, 0],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9],
+											"storage": {
+												"pressed": false
+											}
+										},
+										{
+											"name": "spacer_tdn",
+											"type": "containerCOMP",
+											"parameters": {
+												"w": 10,
+												"vmode": "fill",
+												"alignorder": 800,
+												"clickthrough": true
+											},
+											"position": [600, -200],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "save_folder",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=f'/{parent.Embody.par.Folder}'",
+												"callbacks": "new_save_folder_callbacks",
+												"font": "Open Sans",
+												"fontsize": 9,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 100,
+												"vmode": "fill",
+												"alignorder": 700,
+												"display": "=1 if parent.Embody.par.Status == 'Enabled' else 0",
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"position": [400, 0],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "envoy_status",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "=parent.Embody.par.Envoystatus.eval()",
+												"callbacks": "new_envoy_status_callbacks",
+												"font": "Open Sans",
+												"fontsize": 9,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 160,
+												"vmode": "fill",
+												"alignorder": 1100,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb",
+												"marginl": 3
+											},
+											"position": [1000, 0],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "envoy_toggle",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "Envoy",
+												"callbacks": "new_envoy_toggle_callbacks",
+												"font": "Open Sans",
+												"fontsize": 9,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 65,
+												"vmode": "fill",
+												"alignorder": 1050,
+												"clickthrough": true,
+												"bgcolorr": "=(0.13 if parent.Embody.par.Envoyenable.eval() else parent.Embody.par.Buttonbackgroundcolorr.eval()) + (0.08 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=(0.22 if parent.Embody.par.Envoyenable.eval() else parent.Embody.par.Buttonbackgroundcolorg.eval()) + (0.08 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=(0.15 if parent.Embody.par.Envoyenable.eval() else parent.Embody.par.Buttonbackgroundcolorb.eval()) + (0.08 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"position": [800, 0],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "spacer_envoy",
+											"type": "containerCOMP",
+											"parameters": {
+												"w": 10,
+												"vmode": "fill",
+												"alignorder": 1025,
+												"clickthrough": true
+											},
+											"position": [1200, 0],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "export_comp_tdn",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "󰈝",
+												"callbacks": "new_export_comp_tdn_callbacks",
+												"font": "Material Design Icons",
+												"fontsize": 11,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 36,
+												"vmode": "fill",
+												"alignorder": 950,
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"position": [200, -200],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "status_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "status"
+										},
+										{
+											"name": "disable_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "disable"
+										},
+										{
+											"name": "perform_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "perform"
+										},
+										{
+											"name": "refresh_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "refresh"
+										},
+										{
+											"name": "save_comp_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "save_comp"
+										},
+										{
+											"name": "export_tdn_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "export_tdn"
+										},
+										{
+											"name": "import_tdn_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "import_tdn"
+										},
+										{
+											"name": "initialize_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "initialize"
+										},
+										{
+											"name": "save_folder_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "save_folder"
+										},
+										{
+											"name": "envoy_status_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "envoy_status"
+										},
+										{
+											"name": "envoy_toggle_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "envoy_toggle"
+										},
+										{
+											"name": "export_comp_tdn_callbacks",
+											"type": "textDAT",
+											"parameters": {
+												"language": "python"
+											},
+											"flags": ["viewer"],
+											"position": [0, -160],
+											"size": [160, 130],
+											"color": [0.9, 0.3, 0.4],
+											"dock": "export_comp_tdn"
+										}
+									]
+								},
+								{
+									"name": "panelexec_left",
+									"type": "panelexecuteDAT",
+									"parameters": {
+										"panels": "=op('container_left')",
+										"panelvalue": "*",
+										"ontooff": true
+									},
+									"position": [1000, -200],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "parexec_filter",
+									"type": "parameterexecuteDAT",
+									"parameters": {
+										"op": "=op('container_right/filter')",
+										"pars": "text",
+										"custom": false
+									},
+									"position": [600, -200],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "toolbar_config",
+									"type": "tableDAT",
+									"parameters": {
+										"rows": 16,
+										"cols": 16
+									},
+									"position": [0, -200]
+								},
+								{
+									"name": "container_right",
+									"type": "containerCOMP",
+									"parameters": {
+										"w": 270,
+										"h": 26,
+										"leftanchor": 1,
+										"horigin": 1,
+										"align": "horizrl"
+									},
+									"flags": ["viewer"],
+									"position": [175, 0],
+									"size": [160, 76],
+									"color": [0.3, 0.5, 0.9],
+									"children": [
+										{
+											"name": "pars",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "Pars",
+												"callbacks": "new_pars_callbacks",
+												"font": "Open Sans",
+												"fontsize": 9,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 51,
+												"vmode": "fill",
+												"alignorder": 350,
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"position": [600, 0],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9],
+											"storage": {
+												"pressed": false
+											}
+										},
+										{
+											"name": "close",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "󰖭",
+												"callbacks": "new_close_callbacks",
+												"font": "Material Design Icons",
+												"fontsize": 11,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"w": 26,
+												"vmode": "fill",
+												"alignorder": -200,
+												"clickthrough": true,
+												"bgcolorr": "=parent.Embody.par.Buttonbackgroundcolorr.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorg": "=parent.Embody.par.Buttonbackgroundcolorg.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgcolorb": "=parent.Embody.par.Buttonbackgroundcolorb.eval() + (0.06 if me.fetch('hover', False) else 0)",
+												"bgalpha": 1
+											},
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9],
+											"storage": {
+												"pressed": false
+											}
+										},
+										{
+											"name": "filter",
+											"type": "textCOMP",
+											"parameters": {
+												"text": "",
+												"editmode": "editablecontinuous",
+												"placeholdertext": "Filter...",
+												"callbacks": "new_filter_callbacks",
+												"font": "Open Sans",
+												"fontsize": 9,
+												"fontsizeunits": "points",
+												"fontcolorr": "=parent.Embody.par.Textcolorr",
+												"fontcolorg": "=parent.Embody.par.Textcolorg",
+												"fontcolorb": "=parent.Embody.par.Textcolorb",
+												"textoffsetx": 8,
+												"alignx": "left",
+												"w": 170,
+												"vmode": "fill",
+												"alignorder": 25,
+												"bgcolorr": 0.08,
+												"bgcolorg": 0.08,
+												"bgcolorb": 0.08,
+												"bgalpha": 1
+											},
+											"position": [200, 0],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										},
+										{
+											"name": "spacer_pars",
+											"type": "containerCOMP",
+											"parameters": {
+												"w": 10,
+												"vmode": "fill",
+												"alignorder": 100,
+												"clickthrough": true
+											},
+											"position": [400, 0],
+											"size": [160, 130],
+											"color": [0.3, 0.5, 0.9]
+										}
+									]
+								},
+								{
+									"name": "panelexec_right",
+									"type": "panelexecuteDAT",
+									"parameters": {
+										"panels": "=op('container_right')",
+										"panelvalue": "*",
+										"ontooff": true
+									},
+									"position": [1200, -200],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "parexec_responsive",
+									"type": "parameterexecuteDAT",
+									"parameters": {
+										"op": "=op('../manager')",
+										"pars": "w"
+									},
+									"flags": ["viewer"],
+									"position": [400, -200],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								}
+							]
+						},
+						{
+							"name": "EnvoyExt",
+							"type": "textDAT",
+							"parameters": {
+								"language": "python"
+							},
+							"position": [-300, 500],
+							"size": [130, 90],
+							"color": [0.9, 0.3, 0.4],
+							"tags": ["TDExtension"]
+						},
+						{
+							"name": "mousein1",
+							"type": "mouseinCHOP",
+							"parameters": {
+								"output": "normal",
+								"lbuttonname": "click",
+								"rate": "=me.time.rate",
+								"autoexportroot": "=parent()"
+							},
+							"position": [-625, -525],
+							"size": [130, 90]
+						},
+						{
+							"name": "EmbodyExt",
+							"type": "textDAT",
+							"parameters": {
+								"defaultreadencoding": "cp1252",
+								"language": "python",
+								"extension": "py"
+							},
+							"position": [-300, 600],
+							"size": [130, 90],
+							"color": [0.9, 0.3, 0.4]
+						},
+						{
+							"name": "annotate1",
+							"type": "annotateCOMP",
+							"sequences": {
+								"ext": [
+									{
+										"object": "op.TDAnnotate.mod.AnnotateExt.AnnotateExt(me)",
+										"promote": true
+									}
+								]
+							},
+							"custom_pars": {
+								"Text": {
+									"$t": "text",
+									"Titletext": "Claude Config",
+									"Bodytext": "CLAUDE.md template and .claude/ rule/skill templates for user-project generation."
+								},
+								"Settings": {
+									"$t": "settings",
+									"Mode": "annotate",
+									"Backcolorr": ["=me.color[0] # node color [r]", "=me.color[1]", "=me.color[2] "]
+								},
+								"OP Viewer": {
+									"$t": "op_viewer",
+									"Opvieweroversize": "natural"
+								},
+								"About": {
+									"$t": "about"
+								}
+							},
+							"position": [-770, -1270],
+							"size": [600, 370],
+							"color": [0.45, 0.45, 0.45],
+							"palette_clone": true
+						},
+						{
+							"name": "templates",
+							"type": "baseCOMP",
+							"position": [-400, -1200],
+							"color": [0.3, 0.5, 0.9],
+							"children": [
+								{
+									"name": "text_claude",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"flags": ["viewer"],
+									"position": [0, 1200],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_agents_md",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [300, 1200],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_envoy_bridge",
+									"type": "textDAT",
+									"parameters": {
+										"language": "python"
+									},
+									"position": [900, 1200],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_rule_td_python",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [300, 400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_settings_local",
+									"type": "textDAT",
+									"parameters": {
+										"language": "json"
+									},
+									"position": [600, 1200],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_rule_mcp_safety",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [600, 400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_rule_parameters",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [900, 400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_skill_externalize",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [600, -400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_rule_github_release",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [1500, 400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_rule_network_layout",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [0, 400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_skill_debug_operator",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [300, -400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_skill_create_operator",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [0, -400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_skill_create_extension",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [900, -400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_skill_td_api_reference",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [1500, -400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_skill_manage_annotations",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [1200, -400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_skill_mcp_tools_reference",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [1800, -400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								},
+								{
+									"name": "text_rule_commit_push_checklist",
+									"type": "textDAT",
+									"parameters": {
+										"extension": "md"
+									},
+									"position": [1200, 400],
+									"size": [130, 90],
+									"color": [0.9, 0.3, 0.4]
+								}
+							],
+							"annotations": [
+								{
+									"name": "annotate1",
+									"mode": "annotate",
+									"title": "Config Templates",
+									"text": "CLAUDE.md, AGENTS.md, settings, bridge",
+									"position": [-70, 1130],
+									"size": [1170, 330],
+									"color": [0.45, 0.45, 0.45],
+									"opacity": 0.5
+								},
+								{
+									"name": "annotate2",
+									"mode": "annotate",
+									"title": "Rule Templates",
+									"text": "Auto-deployed rules for user projects",
+									"position": [-70, 330],
+									"size": [1770, 330],
+									"color": [0.45, 0.45, 0.45],
+									"opacity": 0.5
+								},
+								{
+									"name": "annotate3",
+									"mode": "annotate",
+									"title": "Skill Templates",
+									"text": "Auto-deployed skills for Claude Code",
+									"position": [-70, -470],
+									"size": [2070, 330],
+									"color": [0.45, 0.45, 0.45],
+									"opacity": 0.5
+								}
+							]
+						},
+						{
+							"name": "keyboardin1",
+							"type": "keyboardinDAT",
+							"parameters": {
+								"active": "~parent.Embody.par.Enablekeyboardshortcuts",
+								"callbacks": "keyboardin_callbacks",
+								"fromop": "=parent()"
+							},
+							"position": [-325, -275],
+							"size": [130, 90]
+						},
+						{
+							"name": "windowHeader",
+							"type": "containerCOMP",
+							"parameters": {
+								"h": 26,
+								"hmode": "fill",
+								"alignorder": -1,
+								"bgcolorr": "=parent.Embody.par.Backgroundcolorr",
+								"bgcolorg": "=parent.Embody.par.Backgroundcolorg",
+								"bgcolorb": "=parent.Embody.par.Backgroundcolorb",
+								"bgalpha": "=parent.Embody.par.Backgroundcolora",
+								"align": "horizlr",
+								"marginl": 8,
+								"justifyh": "left",
+								"justifyv": "top"
+							},
+							"sequences": {
+								"ext": [
+									{
+										"object": "op('./WindowHeaderExt').module.WindowHeaderExt(me)",
+										"promote": true
+									}
+								]
+							},
+							"custom_pars": {
+								"Header": [
+									{
+										"name": "Headerlabel",
+										"style": "Str",
+										"label": "Label",
+										"value": "=f'Embody v{parent.Embody.par.Version}'"
+									}
+								],
+								"Controls": [
+									{
+										"name": "Windowcomp",
+										"style": "COMP",
+										"label": "Window COMP",
+										"value": "/project1/Embody/window_manager"
+									}
+								]
+							},
+							"position": [300, 475],
+							"size": [160, 130],
+							"color": [0.3, 0.5, 0.9],
+							"comp_inputs": ["manager"],
+							"palette_clone": true
+						},
+						{
+							"name": "annotation_ui",
+							"type": "annotateCOMP",
+							"sequences": {
+								"ext": [
+									{
+										"object": "op.TDAnnotate.mod.AnnotateExt.AnnotateExt(me)",
+										"promote": true
+									}
+								]
+							},
+							"custom_pars": {
+								"Text": {
+									"$t": "text",
+									"Titletext": "UI",
+									"Bodytext": "All user-facing components: toolbar, list view, tagger panel, manager window, and popup windows."
+								},
+								"Settings": {
+									"$t": "settings",
+									"Mode": "annotate",
+									"Backcolorr": ["=me.color[0] # node color [r]", "=me.color[1]", "=me.color[2] "],
+									"Opacity": 0.9
+								},
+								"OP Viewer": {
+									"$t": "op_viewer",
+									"Opvieweroversize": "natural"
+								},
+								"About": {
+									"$t": "about"
+								}
+							},
+							"size": [1300, 1000],
+							"color": [0.45, 0.45, 0.45],
+							"palette_clone": true
+						},
+						{
+							"name": "_envoy_perform",
+							"type": "performCHOP",
+							"parameters": {
+								"msec": true,
+								"cook": true,
+								"droppedframes": true,
+								"gpumemused": true,
+								"totalgpumem": true,
+								"activeops": true,
+								"totalops": true,
+								"cpumemused": true,
+								"cookrealtime": true,
+								"cookrate": true,
+								"timeslicestep": true,
+								"timeslicemsec": true,
+								"performmode": true,
+								"gputemp": true,
+								"autoexportroot": "=parent()"
+							},
+							"position": [-625, -650],
+							"size": [130, 90],
+							"color": [0.67, 0.67, 0.67],
+							"comment": "Envoy project performance monitor",
+							"tags": ["embody_internal"]
+						},
+						{
+							"name": "window_manager",
+							"type": "windowCOMP",
+							"parameters": {
+								"winop": "manager",
+								"ignoretaskbar": false,
+								"justifyh": "center",
+								"justifyv": "center",
+								"winoffsetx": -12,
+								"cursorvisible": "alwaysvisible"
+							},
+							"position": [500, 675],
+							"size": [154, 89]
+						},
+						{
+							"name": "fifo1_callbacks",
+							"type": "textDAT",
+							"parameters": {
+								"language": "python"
+							},
+							"position": [-700, 300],
+							"size": [130, 90],
+							"color": [0.9, 0.3, 0.4],
+							"dock": "fifo1"
+						},
+						{
+							"name": "palette_catalog",
+							"type": "tableDAT",
+							"parameters": {
+								"rows": 526
+							},
+							"position": [-500, 200]
+						},
+						{
+							"name": "timer_callbacks",
+							"type": "textDAT",
+							"parameters": {
+								"language": "python"
+							},
+							"position": [-625, -375],
+							"size": [130, 90],
+							"color": [0.9, 0.3, 0.4],
+							"dock": "timer1"
+						},
+						{
+							"name": "annotation_logic",
+							"type": "annotateCOMP",
+							"sequences": {
+								"ext": [
+									{
+										"object": "op.TDAnnotate.mod.AnnotateExt.AnnotateExt(me)",
+										"promote": true
+									}
+								]
+							},
+							"custom_pars": {
+								"Text": {
+									"$t": "text",
+									"Titletext": "Logic",
+									"Bodytext": "Core extensions (Embody, Envoy, TDN), lifecycle callbacks, parameter handlers, logging, and CLAUDE.md template."
+								},
+								"Settings": {
+									"$t": "settings",
+									"Mode": "annotate",
+									"Backcolorr": [0.485, 0, 0.274833],
+									"Opacity": 0.9
+								},
+								"OP Viewer": {
+									"$t": "op_viewer",
+									"Opvieweroversize": "natural"
+								},
+								"About": {
+									"$t": "about"
+								}
+							},
+							"position": [-770, 30],
+							"size": [670, 830],
+							"color": [0.45, 0.45, 0.45],
+							"palette_clone": true
+						},
+						{
+							"name": "CatalogManagerExt",
+							"type": "textDAT",
+							"parameters": {
+								"language": "python"
+							},
+							"position": [-300, 300],
+							"size": [130, 90],
+							"color": [0.9, 0.3, 0.4]
+						},
+						{
+							"name": "annotation_tagging",
+							"type": "annotateCOMP",
+							"parameters": {
+								"reloadbuiltin": false
+							},
+							"sequences": {
+								"ext": [
+									{
+										"object": "op.TDAnnotate.mod.AnnotateExt.AnnotateExt(me)",
+										"promote": true
+									}
+								]
+							},
+							"custom_pars": {
+								"Text": {
+									"$t": "text",
+									"Titletext": "Tagging",
+									"Bodytext": "Keyboard/mouse input handlers and timer logic for the externalization tagging workflow (Ctrl+Shift+T double-press detection)."
+								},
+								"Settings": {
+									"$t": "settings",
+									"Mode": "annotate",
+									"Backcolorr": [0.198067, 0.5, 0.1765],
+									"Opacity": 0.9
+								},
+								"OP Viewer": {
+									"$t": "op_viewer",
+									"Opvieweroversize": "natural"
+								},
+								"About": {
+									"$t": "about"
+								}
+							},
+							"position": [-800, -700],
+							"size": [700, 600],
+							"palette_clone": true
+						},
+						{
+							"name": "annotation_windows",
+							"type": "annotateCOMP",
+							"sequences": {
+								"ext": [
+									{
+										"object": "op.TDAnnotate.mod.AnnotateExt.AnnotateExt(me)",
+										"promote": true
+									}
+								]
+							},
+							"custom_pars": {
+								"Text": {
+									"$t": "text",
+									"Titletext": "Windows",
+									"Bodytext": "Popup windows for the tagging menu and externalization manager UI."
+								},
+								"Settings": {
+									"$t": "settings",
+									"Mode": "annotate",
+									"Backcolorr": [0.574, 0.574, 0.574],
+									"Opacity": 0.9
+								},
+								"OP Viewer": {
+									"$t": "op_viewer",
+									"Opvieweroversize": "natural"
+								},
+								"About": {
+									"$t": "about"
+								}
+							},
+							"position": [100, 600],
+							"size": [1140, 310],
+							"color": [0.45, 0.45, 0.45],
+							"palette_clone": true
+						},
+						{
+							"name": "divergent_defaults",
+							"type": "tableDAT",
+							"parameters": {
+								"rows": 502
+							},
+							"position": [-500, 300]
+						},
+						{
+							"name": "window_tagging_menu",
+							"type": "windowCOMP",
+							"parameters": {
+								"winop": "tagger",
+								"justifyh": "mouse",
+								"justifyv": "mouse",
+								"winoffsetx": 110
+							},
+							"position": [900, 675],
+							"size": [110, 157]
+						},
+						{
+							"name": "chopexec_exit_tagger",
+							"type": "chopexecuteDAT",
+							"parameters": {
+								"fromop": "=parent()",
+								"chop": "null2",
+								"channel": "click",
+								"offtoon": true,
+								"valuechange": false
+							},
+							"position": [-325, -650],
+							"size": [130, 90],
+							"color": [0.9, 0.3, 0.4],
+							"dock": "null2"
+						},
+						{
+							"name": "keyboardin_callbacks",
+							"type": "textDAT",
+							"parameters": {
+								"language": "python"
+							},
+							"position": [-325, -375],
+							"size": [130, 90],
+							"color": [0.9, 0.3, 0.4],
+							"dock": "keyboardin1"
+						}
+					],
+					"annotations": [
+						{
+							"name": "annotate1",
+							"mode": "annotate",
+							"title": "Claude Config",
+							"text": "CLAUDE.md template and .claude/ rule/skill templates for user-project generation.",
+							"position": [-770, -1270],
+							"size": [600, 370],
+							"color": [0.45, 0.45, 0.45]
+						},
+						{
+							"name": "annotation_logic",
+							"mode": "annotate",
+							"title": "Logic",
+							"text": "Core extensions (Embody, Envoy, TDN), lifecycle callbacks, parameter handlers, logging, and CLAUDE.md template.",
+							"position": [-770, 30],
+							"size": [670, 830],
+							"color": [0.485, 0.0, 0.2748],
+							"opacity": 0.9
+						},
+						{
+							"name": "annotation_tagging",
+							"mode": "annotate",
+							"title": "Tagging",
+							"text": "Keyboard/mouse input handlers and timer logic for the externalization tagging workflow (Ctrl+Shift+T double-press detection).",
+							"position": [-800, -700],
+							"size": [700, 600],
+							"color": [0.1981, 0.5, 0.1765],
+							"opacity": 0.9
+						},
+						{
+							"name": "annotation_ui",
+							"mode": "annotate",
+							"title": "UI",
+							"text": "All user-facing components: toolbar, list view, tagger panel, manager window, and popup windows.",
+							"size": [1300, 1000],
+							"color": [0.45, 0.45, 0.45],
+							"opacity": 0.9
+						},
+						{
+							"name": "annotation_windows",
+							"mode": "annotate",
+							"title": "Windows",
+							"text": "Popup windows for the tagging menu and externalization manager UI.",
+							"position": [100, 600],
+							"size": [1140, 310],
+							"color": [0.574, 0.574, 0.574],
+							"opacity": 0.9
+						}
+					]
+				},
+				{
+					"name": "particles",
+					"type": "baseCOMP",
+					"position": [0, 200],
+					"color": [0.67, 0.67, 0.67],
+					"children": [
+						{
+							"name": "final_out",
+							"type": "nullSOP",
+							"flags": ["viewer"],
+							"position": [1000, 0],
+							"inputs": ["flower_gen"]
+						},
+						{
+							"name": "flower_gen",
+							"type": "deleteSOP",
+							"parameters": {
+								"rangeend": "=me.inputs[0].numPrims if me.par.entity == 'primitive' else me.inputs[0].numPoints"
+							},
+							"position": [800, 0],
+							"size": [130, 90],
+							"color": [0.67, 0.67, 0.67],
+							"inputs": ["collision_detect"]
+						},
+						{
+							"name": "flower_out",
+							"type": "nullSOP",
+							"position": [800, 200]
+						},
+						{
+							"name": "sparkle_out",
+							"type": "nullTOP",
+							"position": [400, -400],
+							"size": [130, 90],
+							"inputs": ["sparkle_blur"]
+						},
+						{
+							"name": "sparkle_blur",
+							"type": "blurTOP",
+							"position": [200, -400],
+							"size": [130, 90],
+							"color": [0.67, 0.67, 0.67],
+							"inputs": ["sparkle_noise"]
+						},
+						{
+							"name": "particle_base",
+							"type": "noiseTOP",
+							"parameters": {
+								"amp": 1,
+								"mono": false,
+								"resolutionw": 512,
+								"resolutionh": 512
+							},
+							"position": [-200, 200]
+						},
+						{
+							"name": "sparkle_noise",
+							"type": "noiseTOP",
+							"position": [0, -400],
+							"inputs": ["particle_base"]
+						},
+						{
+							"name": "particle_force",
+							"type": "forceSOP",
+							"position": [400, 0],
+							"size": [130, 90],
+							"color": [0.67, 0.67, 0.67],
+							"inputs": ["particles_copy"]
+						},
+						{
+							"name": "particle_shape",
+							"type": "sphereSOP",
+							"size": [130, 90],
+							"color": [0.67, 0.67, 0.67]
+						},
+						{
+							"name": "particles_copy",
+							"type": "copySOP",
+							"parameters": {
+								"copyg": "='copyGroup' + str(me.copyIndex)"
+							},
+							"position": [200, 0],
+							"size": [130, 90],
+							"color": [0.67, 0.67, 0.67],
+							"inputs": ["particle_shape"]
+						},
+						{
+							"name": "sparkle_thresh",
+							"type": "thresholdTOP",
+							"position": [0, 200],
+							"size": [130, 90],
+							"color": [0.67, 0.67, 0.67],
+							"inputs": ["particle_base"]
+						},
+						{
+							"name": "composite_final",
+							"type": "compositeTOP",
+							"position": [600, -400],
+							"size": [130, 90],
+							"color": [0.67, 0.67, 0.67],
+							"inputs": ["sparkle_out"]
+						},
+						{
+							"name": "collision_detect",
+							"type": "attributeSOP",
+							"position": [600, 0],
+							"size": [130, 90],
+							"color": [0.67, 0.67, 0.67],
+							"inputs": ["particle_force"]
+						}
+					]
+				},
+				{
+					"name": "sparkles_null",
+					"type": "nullTOP",
+					"position": [200, 50],
+					"size": [130, 105]
+				},
+				{
+					"name": "particles_null",
+					"type": "nullSOP",
+					"position": [200, 200]
+				},
+				{
+					"name": "text1_callbacks",
+					"type": "textDAT",
+					"parameters": {
+						"language": "python"
+					},
+					"flags": ["viewer"],
+					"position": [375, 215],
+					"size": [160, 130],
+					"color": [0.67, 0.67, 0.67],
+					"dock": "text1"
+				},
+				{
+					"name": "externalizations",
+					"type": "tableDAT",
+					"parameters": {
+						"file": "project1/externalizations.tsv",
+						"syncfile": true,
+						"rows": 4,
+						"cols": 11
+					},
+					"position": [300, 650],
+					"tags": ["tsv"]
+				}
+			]
+		}
+	]
+}
