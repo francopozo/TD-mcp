@@ -4,8 +4,8 @@
 	"build": null,
 	"generator": "Embody/5.0.403",
 	"td_build": "099.2025.32460",
-	"source_file": "Test.11.toe",
-	"exported_at": "2026-05-06T01:25:33Z",
+	"source_file": "Test.13.toe",
+	"exported_at": "2026-05-06T01:38:15Z",
 	"network_path": "/",
 	"options": {
 		"include_dat_content": false,
@@ -101,9 +101,12 @@
 			"color": [0.3, 0.5, 0.9]
 		},
 		"nullSOP": {
+			"flags": ["viewer"],
 			"color": [0.67, 0.67, 0.67]
 		},
 		"nullTOP": {
+			"flags": ["viewer"],
+			"size": [130, 90],
 			"color": [0.67, 0.67, 0.67]
 		},
 		"noiseTOP": {
@@ -339,6 +342,7 @@
 	},
 	"type": "baseCOMP",
 	"flags": ["display", "render"],
+	"tags": ["tdn"],
 	"operators": [
 		{
 			"name": "project1",
@@ -5118,7 +5122,6 @@
 						{
 							"name": "final_out",
 							"type": "nullSOP",
-							"flags": ["viewer"],
 							"position": [1000, -4],
 							"size": [130, 94],
 							"inputs": ["flower_gen"]
@@ -5138,16 +5141,13 @@
 						{
 							"name": "flower_out",
 							"type": "nullSOP",
-							"flags": ["viewer"],
 							"position": [800, 200],
 							"size": [130, 90]
 						},
 						{
 							"name": "sparkle_out",
 							"type": "nullTOP",
-							"flags": ["viewer"],
 							"position": [400, -400],
-							"size": [130, 90],
 							"inputs": ["sparkle_blur"]
 						},
 						{
@@ -5216,11 +5216,17 @@
 						{
 							"name": "composite_final",
 							"type": "compositeTOP",
-							"flags": ["viewer"],
+							"flags": ["bypass", "viewer"],
 							"position": [600, -400],
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67],
 							"inputs": ["sparkle_out"]
+						},
+						{
+							"name": "sparkles_output",
+							"type": "nullTOP",
+							"position": [1050, -250],
+							"inputs": ["composite_final"]
 						},
 						{
 							"name": "collision_detect",
@@ -5230,20 +5236,15 @@
 							"size": [130, 90],
 							"color": [0.67, 0.67, 0.67],
 							"inputs": ["particle_force"]
+						},
+						{
+							"name": "particles_output",
+							"type": "nullSOP",
+							"position": [1275, -25],
+							"size": [130, 90],
+							"inputs": ["final_out"]
 						}
 					]
-				},
-				{
-					"name": "sparkles_output",
-					"type": "nullTOP",
-					"parameters": {
-						"outputresolution": "custom",
-						"resolutionw": 512,
-						"resolutionh": 512
-					},
-					"position": [225, 25],
-					"size": [130, 105],
-					"inputs": ["particles/composite_final"]
 				},
 				{
 					"name": "text1_callbacks",
@@ -5268,13 +5269,6 @@
 					},
 					"position": [300, 650],
 					"tags": ["tsv"]
-				},
-				{
-					"name": "particles_output",
-					"type": "nullSOP",
-					"position": [225, 225],
-					"size": [130, 90],
-					"inputs": ["particles/final_out"]
 				}
 			]
 		}

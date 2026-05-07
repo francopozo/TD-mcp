@@ -1,4 +1,4 @@
 path	type	strategy	rel_file_path	timestamp	dirty	build	touch_build	node_x	node_y	node_color
 /project1/externalizations	table	tsv	project1/externalizations.tsv	2026-05-06 00:23:25 UTC				300	650	0.9000,0.3000,0.4000
 /project1/text1	text	tox	project1/text1.tox	2026-05-06 00:29:00 UTC	False	1	2025.32460	850	175	0.3250,0.8000,0.3000
-/	base	tdn	Test.tdn	2026-05-06 01:25:33 UTC			099.2025.32460	0	0	0.5450,0.5450,0.5450
+/	base	tdn	Test.tdn	2026-05-06 01:38:15 UTC			099.2025.32460	0	0	0.5450,0.5450,0.5450

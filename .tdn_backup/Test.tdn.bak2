@@ -4,8 +4,8 @@
 	"build": null,
 	"generator": "Embody/5.0.403",
 	"td_build": "099.2025.32460",
-	"source_file": "Test.8.toe",
-	"exported_at": "2026-05-06T01:23:13Z",
+	"source_file": "Test.10.toe",
+	"exported_at": "2026-05-06T01:24:39Z",
 	"network_path": "/",
 	"options": {
 		"include_dat_content": false,
@@ -101,7 +101,6 @@
 			"color": [0.3, 0.5, 0.9]
 		},
 		"nullSOP": {
-			"size": [130, 90],
 			"color": [0.67, 0.67, 0.67]
 		},
 		"nullTOP": {
@@ -363,7 +362,7 @@
 						"callbacks": "text1_callbacks"
 					},
 					"flags": ["viewer"],
-					"position": [375, 375],
+					"position": [425, 450],
 					"size": [160, 130],
 					"color": [0.325, 0.8, 0.3],
 					"tags": ["tox"]
@@ -5119,8 +5118,8 @@
 						{
 							"name": "final_out",
 							"type": "nullSOP",
-							"flags": ["viewer"],
-							"position": [1000, 0],
+							"position": [1000, -4],
+							"size": [130, 94],
 							"inputs": ["flower_gen"]
 						},
 						{
@@ -5137,7 +5136,8 @@
 						{
 							"name": "flower_out",
 							"type": "nullSOP",
-							"position": [800, 200]
+							"position": [800, 200],
+							"size": [130, 90]
 						},
 						{
 							"name": "sparkle_out",
@@ -5224,6 +5224,11 @@
 				{
 					"name": "sparkles_output",
 					"type": "nullTOP",
+					"parameters": {
+						"outputresolution": "custom",
+						"resolutionw": 512,
+						"resolutionh": 512
+					},
 					"position": [400, 0]
 				},
 				{
@@ -5233,7 +5238,7 @@
 						"language": "python"
 					},
 					"flags": ["viewer"],
-					"position": [375, 215],
+					"position": [425, 290],
 					"size": [160, 130],
 					"color": [0.67, 0.67, 0.67],
 					"dock": "text1"
@@ -5253,7 +5258,8 @@
 				{
 					"name": "particles_output",
 					"type": "nullSOP",
-					"position": [400, 200]
+					"position": [400, 200],
+					"size": [130, 90]
 				}
 			]
 		}
